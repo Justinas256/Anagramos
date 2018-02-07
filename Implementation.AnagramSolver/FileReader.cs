@@ -11,7 +11,7 @@ namespace Implementation.AnagramSolver
 {
     public class FileReader : IWordRepository
     {
-        private String FilePath = Path.Combine(Directory.GetCurrentDirectory(), "\\zodnas.txt");
+        private String FilePath = Path.Combine(Directory.GetCurrentDirectory(), "\\zodynas.txt");
 
         public ArrayList Words { get; private set; }
 
