@@ -11,7 +11,7 @@ namespace Implementation.AnagramSolver
 {
     public class FileReader : IWordRepository
     {
-        private String FilePath = @"C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\zodynas.txt";
+        private String FilePath = "zodynas.txt";
 
         public ArrayList Words { get; private set; }
 
@@ -29,7 +29,8 @@ namespace Implementation.AnagramSolver
                 }
             } else
             {
-                throw new FileNotFoundException("File was not found!");
+                Console.WriteLine(Directory.GetCurrentDirectory());
+                //throw new FileNotFoundException("File was not found!");
             }
             return Words;
         }
