@@ -1,0 +1,7 @@
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\bin\Debug\Anagramos.exe.config
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\bin\Debug\Anagramos.exe
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\bin\Debug\Anagramos.pdb
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\obj\Debug\Anagramos.csprojResolveAssemblyReference.cache
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\obj\Debug\Anagramos.csproj.CoreCompileInputs.cache
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\obj\Debug\Anagramos.exe
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\obj\Debug\Anagramos.pdb

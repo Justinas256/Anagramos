@@ -1,0 +1,6 @@
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Interfaces.AnagramSolver\bin\Debug\Interfaces.AnagramSolver.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Interfaces.AnagramSolver\bin\Debug\Interfaces.AnagramSolver.pdb
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Interfaces.AnagramSolver\obj\Debug\Interfaces.AnagramSolver.csprojResolveAssemblyReference.cache
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Interfaces.AnagramSolver\obj\Debug\Interfaces.AnagramSolver.csproj.CoreCompileInputs.cache
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Interfaces.AnagramSolver\obj\Debug\Interfaces.AnagramSolver.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Interfaces.AnagramSolver\obj\Debug\Interfaces.AnagramSolver.pdb
