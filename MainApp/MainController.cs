@@ -25,22 +25,28 @@ namespace MainApp
 
         public void Start()
         {
-            ArrayList words = DataReader.GetData();
-            String writtenWord = Graphic.GetWords();
-            string[] splittedWords = writtenWord.Split(' ', '\t');
-
-            ArrayList toFind = new ArrayList();
-            foreach(String word in splittedWords)
+            try
             {
-                String lowerCaseWord = word.ToLower();
-                toFind.Add(lowerCaseWord);
+                ArrayList words = DataReader.GetData();
+                String writtenWord = Graphic.GetWords();
+                string[] splittedWords = writtenWord.Split(' ', '\t');
+
+                ArrayList toFind = new ArrayList();
+                foreach (String word in splittedWords)
+                {
+                    String lowerCaseWord = word.ToLower();
+                    toFind.Add(lowerCaseWord);
+                }
+
+                List<string> findedWords = null;
+                if (toFind.Count > 0)
+                    findedWords = Solver.FindWords(words, toFind);
+
+                Graphic.WriteWords(findedWords);
+            } catch (Exception e)
+            {
+                Graphic.ErrorMessage(e.Message);
             }
-
-            List<string> findedWords = null;
-            if (toFind.Count > 0)
-                findedWords = Solver.FindWords(words, toFind);
-
-            Graphic.WriteWords(findedWords);
         }
 
 

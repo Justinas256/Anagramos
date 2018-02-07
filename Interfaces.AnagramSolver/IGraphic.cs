@@ -11,5 +11,6 @@ namespace Interfaces.AnagramSolver
         void Start();
         String GetWords();
         void WriteWords(List<string> findedWords);
+        void ErrorMessage(String error);
     }
 }

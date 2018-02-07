@@ -39,5 +39,12 @@ namespace Implementation.AnagramSolver
             }
             Console.Read();
         }
+
+        public void ErrorMessage(string error)
+        {
+            Console.WriteLine(error);
+            Console.Read();
+        }
+
     }
 }
