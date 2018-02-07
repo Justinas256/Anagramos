@@ -27,20 +27,24 @@ namespace MainApp
         {
             try
             {
-                ArrayList words = DataReader.GetData();
+                List<String> words = DataReader.GetData();
+                Solver.Init(words);
                 String writtenWord = Graphic.GetWords();
                 string[] splittedWords = writtenWord.Split(' ', '\t');
 
-                ArrayList toFind = new ArrayList();
+                List<String> toFind = splittedWords.Select(x => x.ToLower()).ToList();
+
+                /*
                 foreach (String word in splittedWords)
                 {
                     String lowerCaseWord = word.ToLower();
                     toFind.Add(lowerCaseWord);
                 }
+                */
 
                 List<string> findedWords = null;
                 if (toFind.Count > 0)
-                    findedWords = Solver.FindWords(words, toFind);
+                    findedWords = Solver.FindWords(toFind);
 
                 Graphic.WriteWords(findedWords);
             } catch (Exception e)

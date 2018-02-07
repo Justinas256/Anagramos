@@ -9,6 +9,7 @@ namespace Interfaces.AnagramSolver
 {
     public interface IAnagramSolver
     {
-        List<string> FindWords(ArrayList allWords, ArrayList toFind);
+        void Init(List<String> words);
+        List<string> FindWords(List<String> toFind);
     }
 }

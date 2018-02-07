@@ -29,13 +29,12 @@ namespace Implementation.AnagramSolver
         {
             if (findedWords != null)
             {
-                foreach (String word in findedWords)
-                    Console.WriteLine(word);
+                Console.WriteLine(string.Join(", ", findedWords));
                 Console.WriteLine("Words finded!");
             }
             else
             {
-                Console.WriteLine("Zodziai nerasti");
+                Console.WriteLine("Words not founded!");
             }
             Console.Read();
         }

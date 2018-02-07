@@ -10,14 +10,22 @@ namespace Implementation.AnagramSolver
 {
     public class OneWordFinder : IAnagramSolver
     {
-        public List<string> FindWords(ArrayList allWords, ArrayList toFind)
+
+        private List<String> AllWords;
+
+        public void Init(List<String> words)
         {
-            if (toFind == null || toFind.Count < 1 || allWords == null || allWords.Count == 0)
+            AllWords = words;
+        }
+
+        public List<string> FindWords(List<String> toFind)
+        {
+            if (toFind == null || toFind.Count < 1 || AllWords == null || AllWords.Count == 0)
                 return null;
 
             String sortedWord = SortLetters(toFind[0].ToString());
 
-            Dictionary<string, List<string>> dictionary = ListToDictionary(allWords);
+            Dictionary<string, List<string>> dictionary = ListToDictionary(AllWords);
 
             if (dictionary.ContainsKey(sortedWord))
             {
@@ -40,7 +48,7 @@ namespace Implementation.AnagramSolver
             return words;
         }
 
-        private Dictionary<string, List<string>> ListToDictionary(ArrayList allWords)
+        private Dictionary<string, List<string>> ListToDictionary(List<String> allWords)
         {
             Dictionary<string, List<string>> words = new Dictionary<string, List<string>>();
 

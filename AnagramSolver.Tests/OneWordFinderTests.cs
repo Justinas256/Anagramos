@@ -20,44 +20,45 @@ namespace AnagramSolver.Tests
         [Test]
         public void FindWords_NoWordsList_ReturnNull()
         {
-            ArrayList words = new ArrayList();
-            words.Add("alus");
+            List<String> toFind = new List<String>();
+            toFind.Add("alus");
             IAnagramSolver oneWordFinder = new OneWordFinder();
-            Assert.IsNull(oneWordFinder.FindWords(null, words));
+            oneWordFinder.Init(null);
+            Assert.IsNull(oneWordFinder.FindWords(toFind));
         }
 
         [Test]
         public void FindWords_NoListOfWordsToFind_ReturnNull()
         {
-            ArrayList words = new ArrayList();
+            List<String> words = new List<String>();
             words.Add("alus");
             IAnagramSolver oneWordFinder = new OneWordFinder();
-            Assert.IsNull(oneWordFinder.FindWords(words, null));
+            oneWordFinder.Init(null);
+            Assert.IsNull(oneWordFinder.FindWords(words));
         }
 
         [Test]
         public void FindWords_ToAnogram_CorrectWords()
         {
-            ArrayList wordsToFind = new ArrayList() { "alus" };
-            ArrayList allWords = new ArrayList() { "alus", "sula", "pele" };
+            List<String> wordsToFind = new List<String>() { "alus" };
+            List<String> allWords = new List<String>() { "alus", "sula", "pele" };
             List<string> correctWords = new List<string>() { "alus", "sula"};
             IAnagramSolver oneWordFinder = new OneWordFinder();
-            List<string> findedWords = oneWordFinder.FindWords(allWords, wordsToFind);
+            oneWordFinder.Init(allWords);
+            List<string> findedWords = oneWordFinder.FindWords(wordsToFind);
             Assert.IsTrue(findedWords.All(correctWords.Contains));
         }
 
         [Test]
         public void Should_Find_Correct_Words()
         {
-            ArrayList wordsToFind = new ArrayList() { "rasa" };
-            ArrayList allWords = new ArrayList() { "aras", "sula", "pele" };
+            List<String> wordsToFind = new List<String>() { "rasa" };
+            List<String> allWords = new List<String>() { "aras", "sula", "pele" };
             String correctWord = "aras";
             IAnagramSolver oneWordFinder = new OneWordFinder();
-            List<string> findedWords = oneWordFinder.FindWords(allWords, wordsToFind);
-            if (findedWords == null || findedWords.Count != 1)
-                Assert.Fail();
-            else
-                correctWord.ShouldBe(findedWords[0]);
+            oneWordFinder.Init(allWords);
+            List<string> findedWords = oneWordFinder.FindWords(wordsToFind);
+            correctWord.ShouldBe(findedWords.Single());
         }
 
 

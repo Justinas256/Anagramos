@@ -25,3 +25,4 @@ C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\obj\Deb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\obj\Debug\AnagramSolver.Tests.dll
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\obj\Debug\AnagramSolver.Tests.pdb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Shouldly.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\AnagramSolver.Tests.dll.config

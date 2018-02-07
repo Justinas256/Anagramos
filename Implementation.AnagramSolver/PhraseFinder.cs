@@ -10,7 +10,15 @@ namespace Implementation.AnagramSolver
 {
     public class PhraseFinder : IAnagramSolver
     {
-        public List<string> FindWords(ArrayList allWords, ArrayList toFind)
+
+        private List<String> AllWords;
+
+        public void Init(List<String> words)
+        {
+            AllWords = words;
+        }
+
+        public List<string> FindWords(List<String> toFind)
         {
             if (toFind == null || toFind.Count < 1)
                 return null;
@@ -20,7 +28,7 @@ namespace Implementation.AnagramSolver
                 combinedWord += word;
             String sortedWord = SortLetters(combinedWord);
 
-            Dictionary<string, List<string>> dictionary = ListToDictionary(allWords);
+            Dictionary<string, List<string>> dictionary = ListToDictionary(AllWords);
 
             if (dictionary.ContainsKey(sortedWord))
             {
@@ -51,7 +59,7 @@ namespace Implementation.AnagramSolver
 
         }
 
-        private Dictionary<string, List<string>> ListToDictionary(ArrayList allWords)
+        private Dictionary<string, List<string>> ListToDictionary(List<String> allWords)
         {
             Dictionary<string, List<string>> words = new Dictionary<string, List<string>>();
 

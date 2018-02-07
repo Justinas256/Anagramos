@@ -11,17 +11,21 @@ namespace Implementation.AnagramSolver
 {
     public class FileReader : IWordRepository
     {
-        private String FilePath = Path.Combine(Directory.GetCurrentDirectory(), "\\zodynas.txt");
+        private String _FilePath;
 
-        public ArrayList Words { get; private set; }
+        public List<String> Words { get; private set; }
 
-        public ArrayList GetData()
+        public FileReader(String path)
         {
-            Words = new ArrayList();
+            _FilePath = path;
+        }
 
-            if(File.Exists(FilePath)) {
-                Console.WriteLine(Directory.GetCurrentDirectory());
-                string[] allLines = File.ReadAllLines(FilePath);
+        public List<String> GetData()
+        {
+            Words = new List<String>();
+
+            if(_FilePath != null && File.Exists(_FilePath)) {
+                string[] allLines = File.ReadAllLines(_FilePath);
                 foreach (var Line in allLines)
                 {
                     string[] lineWords = Line.Split('\t');
