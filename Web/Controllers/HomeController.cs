@@ -28,6 +28,19 @@ namespace Web.Controllers
             return View("Index");
         }
 
+        public String AnagramText(String word)
+        {
+            Solver = MvcApplication.Solver;
+            var toFind = new List<String>() { word };
+            var foundedAnagrams = new List<String>() { word };
+            if (Solver != null)
+                foundedAnagrams = Solver.FindWords(toFind);
+            if (foundedAnagrams == null || foundedAnagrams.Count == 0)
+                return "No anagrams were founded";
+            else 
+                return "Founded" + string.Join(", ", foundedAnagrams);
+        }
+
         public ViewResult Show(int? page)
         {
             AllWords = MvcApplication.Solver.AllWords;

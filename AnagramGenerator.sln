@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Implementation.AnagramSolve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces.AnagramSolver", "Interfaces.AnagramSolver\Interfaces.AnagramSolver.csproj", "{B6DEF0CE-43E9-4A1D-87CD-A7AA47876696}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpConsole", "HttpConsole\HttpConsole.csproj", "{253453D3-91D4-4A1A-8C24-E49CA9D86184}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B6DEF0CE-43E9-4A1D-87CD-A7AA47876696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6DEF0CE-43E9-4A1D-87CD-A7AA47876696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6DEF0CE-43E9-4A1D-87CD-A7AA47876696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{253453D3-91D4-4A1A-8C24-E49CA9D86184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{253453D3-91D4-4A1A-8C24-E49CA9D86184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{253453D3-91D4-4A1A-8C24-E49CA9D86184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{253453D3-91D4-4A1A-8C24-E49CA9D86184}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
