@@ -11,11 +11,13 @@ namespace Implementation.AnagramSolver
     public class OneWordFinder : IAnagramSolver
     {
 
-        private List<String> AllWords;
+        public List<string> AllWords { private set; get; }
+        public Dictionary<string, List<string>> DictionaryWords { private set; get; }
 
-        public void Init(List<String> words)
+        public void Init(List<string> words)
         {
             AllWords = words;
+            DictionaryWords = ListToDictionary(AllWords);
         }
 
         public List<string> FindWords(List<String> toFind)
@@ -25,11 +27,9 @@ namespace Implementation.AnagramSolver
 
             String sortedWord = SortLetters(toFind[0].ToString());
 
-            Dictionary<string, List<string>> dictionary = ListToDictionary(AllWords);
-
-            if (dictionary.ContainsKey(sortedWord))
+            if (DictionaryWords.ContainsKey(sortedWord))
             {
-                return dictionary[sortedWord];
+                return DictionaryWords[sortedWord];
             }
 
             return null;
@@ -50,6 +50,9 @@ namespace Implementation.AnagramSolver
 
         private Dictionary<string, List<string>> ListToDictionary(List<String> allWords)
         {
+            if (allWords == null)
+                return null;
+
             Dictionary<string, List<string>> words = new Dictionary<string, List<string>>();
 
             foreach (string word in allWords)

@@ -1,0 +1,16 @@
+﻿@model PagedList.IPagedList<String>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Anagrams";
+}
+<h2>Anagrams</h2>
+
+@foreach (String item in Model)
+{
+    <li>@Html.ActionLink(@item, "Anagram", "Home", new { word =  @item}, null)</li>
+}
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Show", new { page }))

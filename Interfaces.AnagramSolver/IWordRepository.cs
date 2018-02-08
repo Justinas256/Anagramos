@@ -9,6 +9,6 @@ namespace Interfaces.AnagramSolver
 {
     public interface IWordRepository
     {
-        List<String> GetData();
+        List<string> GetData();
     }
 }

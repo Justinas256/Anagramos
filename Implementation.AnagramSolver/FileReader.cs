@@ -13,16 +13,16 @@ namespace Implementation.AnagramSolver
     {
         private String _FilePath;
 
-        public List<String> Words { get; private set; }
+        public List<string> Words;
 
         public FileReader(String path)
         {
             _FilePath = path;
         }
 
-        public List<String> GetData()
+        public List<string> GetData()
         {
-            Words = new List<String>();
+            Words = new List<string>();
 
             if(_FilePath != null && File.Exists(_FilePath)) {
                 string[] allLines = File.ReadAllLines(_FilePath);
@@ -37,7 +37,7 @@ namespace Implementation.AnagramSolver
                 //Console.WriteLine(Directory.GetCurrentDirectory());
                 throw new FileNotFoundException("File was not found!");
             }
-            return Words;
+            return Words.Distinct().ToList();
         }
     }
 }

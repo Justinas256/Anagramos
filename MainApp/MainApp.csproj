@@ -51,6 +51,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="zodynas.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Implementation.AnagramSolver\Implementation.AnagramSolver.csproj">
       <Project>{cf9fb0d8-e7d8-470a-991d-82360ed558cf}</Project>
       <Name>Implementation.AnagramSolver</Name>
@@ -59,9 +62,6 @@
       <Project>{b6def0ce-43e9-4a1d-87cd-a7aa47876696}</Project>
       <Name>Interfaces.AnagramSolver</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="zodynas.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

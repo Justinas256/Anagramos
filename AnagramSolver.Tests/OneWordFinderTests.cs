@@ -20,7 +20,7 @@ namespace AnagramSolver.Tests
         [Test]
         public void FindWords_NoWordsList_ReturnNull()
         {
-            List<String> toFind = new List<String>();
+            var toFind = new List<string>();
             toFind.Add("alus");
             IAnagramSolver oneWordFinder = new OneWordFinder();
             oneWordFinder.Init(null);
@@ -33,8 +33,8 @@ namespace AnagramSolver.Tests
             List<String> words = new List<String>();
             words.Add("alus");
             IAnagramSolver oneWordFinder = new OneWordFinder();
-            oneWordFinder.Init(null);
-            Assert.IsNull(oneWordFinder.FindWords(words));
+            oneWordFinder.Init(words);
+            Assert.IsNull(oneWordFinder.FindWords(null));
         }
 
         [Test]

@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <h1>Welcome to Anagram Generator</h1>
+</div>
+
+
+@{
+    if (ViewBag.Anagrams != null)
+    {
+        <p><h2>Founded anagrams:</h2></p>
+        foreach (string anagram in ViewBag.Anagrams)
+        {
+            <li>@anagram</li>
+        }
+    }
+    else
+    {
+        <h2>No anagrams were founded</h2>
+    }
+}
