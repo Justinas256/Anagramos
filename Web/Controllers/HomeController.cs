@@ -10,9 +10,18 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         IAnagramSolver Solver;
-        List<string> AllWords;
+
+        public HomeController()
+        {
+            Solver = MvcApplication.Solver;
+        }
+
+        public HomeController(IAnagramSolver solver)
+        {
+            Solver = solver;
+        }
 
         public ActionResult Index()
         {
@@ -20,7 +29,7 @@ namespace Web.Controllers
         }
 
         public ActionResult Anagram(String word)
-        {
+        { 
             List<string> lastAnagrams;
             if (Request.Cookies["lastAnagram"] != null)
             {
@@ -39,20 +48,17 @@ namespace Web.Controllers
             Response.Cookies["lastAnagram"].Value = lastAnagramsString;
             Response.Cookies["lastAnagram"].Expires = DateTime.Now.AddDays(1);
 
-            Solver = MvcApplication.Solver;
-            var toFind = new List<String>() { word };
-            if(Solver != null)
-                ViewBag.Anagrams = Solver.FindWords(toFind); ;
+            ViewBag.Anagrams = Solver?.FindWords(new List<String>() { word });
+
             return View("Index");
         }
 
         [Route("home/anagrams/{page:int:min(1)=1}")]
         public ViewResult Show(int? page)
         {
-            AllWords = MvcApplication.Solver.AllWords;
             int pageSize = 100;
             int pageNumber = (page ?? 1);
-            return View(AllWords.ToPagedList(pageNumber, pageSize));
+            return View(Solver.AllWords.ToPagedList(pageNumber, pageSize));
         }
 
         public ViewResult Find()

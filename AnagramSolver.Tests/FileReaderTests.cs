@@ -23,7 +23,9 @@ namespace AnagramSolver.Tests
             words = fileReader.GetData();
             Assert.NotNull(words);
             if (words != null)
+            {
                 Assert.NotZero(words.Count);
+            }
         }
 
         [Test]

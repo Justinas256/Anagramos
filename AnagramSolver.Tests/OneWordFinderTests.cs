@@ -14,6 +14,7 @@ namespace AnagramSolver.Tests
     [TestFixture]
     public class OneWordFinderTests
     {
+
         public ArrayList allWords;
         public ArrayList toFind;
 
@@ -22,8 +23,7 @@ namespace AnagramSolver.Tests
         {
             var toFind = new List<string>();
             toFind.Add("alus");
-            IAnagramSolver oneWordFinder = new OneWordFinder();
-            oneWordFinder.Init(null);
+            IAnagramSolver oneWordFinder = new OneWordFinder(null);
             Assert.IsNull(oneWordFinder.FindWords(toFind));
         }
 
@@ -32,8 +32,7 @@ namespace AnagramSolver.Tests
         {
             List<String> words = new List<String>();
             words.Add("alus");
-            IAnagramSolver oneWordFinder = new OneWordFinder();
-            oneWordFinder.Init(words);
+            IAnagramSolver oneWordFinder = new OneWordFinder(words);
             Assert.IsNull(oneWordFinder.FindWords(null));
         }
 
@@ -43,8 +42,7 @@ namespace AnagramSolver.Tests
             List<String> wordsToFind = new List<String>() { "alus" };
             List<String> allWords = new List<String>() { "alus", "sula", "pele" };
             List<string> correctWords = new List<string>() { "alus", "sula"};
-            IAnagramSolver oneWordFinder = new OneWordFinder();
-            oneWordFinder.Init(allWords);
+            IAnagramSolver oneWordFinder = new OneWordFinder(allWords);
             List<string> findedWords = oneWordFinder.FindWords(wordsToFind);
             Assert.IsTrue(findedWords.All(correctWords.Contains));
         }
@@ -55,8 +53,7 @@ namespace AnagramSolver.Tests
             List<String> wordsToFind = new List<String>() { "rasa" };
             List<String> allWords = new List<String>() { "aras", "sula", "pele" };
             String correctWord = "aras";
-            IAnagramSolver oneWordFinder = new OneWordFinder();
-            oneWordFinder.Init(allWords);
+            IAnagramSolver oneWordFinder = new OneWordFinder(allWords);
             List<string> findedWords = oneWordFinder.FindWords(wordsToFind);
             correctWord.ShouldBe(findedWords.Single());
         }

@@ -12,7 +12,9 @@ namespace MainApp
         static void Main(string[] args)
         {
             string _path = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
-            MainController controller = new MainController(new OneWordsConsole(), new FileReader(_path), new OneWordFinder());
+            var fileReader = new FileReader(_path);
+            var solver = new OneWordFinder(fileReader.GetData());
+            MainController controller = new MainController(new OneWordsConsole(), solver);
             controller.Start();
         }
     }

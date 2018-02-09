@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Implementation.AnagramSolver
 {
+    //many unused methods
     public class PhraseFinder : IAnagramSolver
     {
 

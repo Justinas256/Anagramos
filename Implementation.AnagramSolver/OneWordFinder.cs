@@ -12,9 +12,9 @@ namespace Implementation.AnagramSolver
     {
 
         public List<string> AllWords { private set; get; }
-        public Dictionary<string, List<string>> DictionaryWords { private set; get; }
+        private Dictionary<string, List<string>> DictionaryWords { get; set; }
 
-        public void Init(List<string> words)
+        public OneWordFinder(List<string> words)
         {
             AllWords = words;
             DictionaryWords = ListToDictionary(AllWords);
@@ -79,7 +79,7 @@ namespace Implementation.AnagramSolver
 
             //int noOfLetters = 3;
 
-            String combinedWord = "";
+            String combinedWord = string.Empty;
 
             foreach (String word in toFind)
             {
@@ -89,30 +89,6 @@ namespace Implementation.AnagramSolver
             combinedWord = SortLetters(combinedWord);
 
             return null;
-        }
-
-        private Dictionary<string, List<string>> ListToSumDictionary(ArrayList allWords)
-        {
-            Dictionary<string, List<string>> words = new Dictionary<string, List<string>>();
-
-            foreach (string word in allWords)
-            {
-                String sortedWord = SortLetters(word);
-                if (words.ContainsKey(sortedWord))
-                {
-                    List<string> wordsList = words[sortedWord];
-                    if (!wordsList.Contains(word))
-                        wordsList.Add(word);
-                }
-                else
-                {
-                    List<string> wordsList = new List<string>();
-                    wordsList.Add(word);
-                    words.Add(sortedWord, wordsList);
-                }
-            }
-
-            return null; ;
         }
 
     }

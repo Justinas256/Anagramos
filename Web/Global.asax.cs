@@ -24,8 +24,7 @@ namespace Web
             string path = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
             try { 
                 IWordRepository fileReader = new FileReader(path);
-                Solver = new OneWordFinder();
-                Solver.Init(fileReader.GetData());
+                Solver = new OneWordFinder(fileReader.GetData());
             } catch { }
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);

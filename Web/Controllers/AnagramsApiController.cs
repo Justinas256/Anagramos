@@ -13,15 +13,21 @@ namespace Web.Controllers
     {
         IAnagramSolver Solver;
 
-        [HttpGet]
-        public IHttpActionResult AnagramText(String word)
+        public AnagramsApiController()
         {
             Solver = MvcApplication.Solver;
-            var toFind = new List<String>() { word };
-            var foundedAnagrams = new List<String>() { word };
-            if (Solver != null)
-                foundedAnagrams = Solver.FindWords(toFind);
-            if (foundedAnagrams == null || foundedAnagrams.Count == 0)
+        }
+
+        public AnagramsApiController(IAnagramSolver solver)
+        {
+            Solver = solver;
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetAnagram(String word)
+        {
+            List<String> foundedAnagrams = Solver?.FindWords(new List<String>() { word });
+            if (foundedAnagrams == null || !foundedAnagrams.Any())
                 return Ok("No anagrams were founded");
             else
                 return Ok("Founded: " + string.Join(", ", foundedAnagrams));

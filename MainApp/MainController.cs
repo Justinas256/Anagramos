@@ -13,13 +13,13 @@ namespace MainApp
     {
 
         IGraphic Graphic;
-        IWordRepository DataReader;
+        //IWordRepository DataReader;
         IAnagramSolver Solver;
 
-        public MainController (IGraphic graphic, IWordRepository dataReader, IAnagramSolver solver)
+        public MainController (IGraphic graphic, IAnagramSolver solver)
         {
             Graphic = graphic;
-            DataReader = dataReader;
+            //DataReader = dataReader;
             Solver = solver;
         }
 
@@ -27,8 +27,6 @@ namespace MainApp
         {
             try
             {
-                List<String> words = DataReader.GetData();
-                Solver.Init(words);
                 String writtenWord = Graphic.GetWords();
                 string[] splittedWords = writtenWord.Split(' ', '\t');
 

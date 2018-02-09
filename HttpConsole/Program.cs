@@ -30,7 +30,7 @@ namespace HttpConsole
         {
             try
             {
-                string anagram = await GetAnogramAsync("api/anagramsapi/AnagramText", data);
+                string anagram = await GetAnogramAsync("api/anagramsapi/GetAnagram", data);
                 Console.WriteLine(anagram);
             }
             catch (Exception e)
