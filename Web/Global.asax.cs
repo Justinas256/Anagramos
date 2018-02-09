@@ -1,9 +1,11 @@
 ﻿using Implementation.AnagramSolver;
 using Interfaces.AnagramSolver;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Web.App_Start;
 
 namespace Web
 {
@@ -13,9 +15,11 @@ namespace Web
 
         protected void Application_Start()
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+ 
 
             string path = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
             try { 

@@ -28,30 +28,32 @@ namespace HttpConsole
 
         static async Task RunAsync(string data)
         {
-            // Update port # in the following line.
-            client.BaseAddress = new Uri("http://localhost:54566/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("text/plain"));
-
             try
             {
-                string anagram = await GetAnogramAsync("home/AnagramText", data);
+                string anagram = await GetAnogramAsync("api/anagramsapi/AnagramText", data);
                 Console.WriteLine(anagram);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
-            Console.ReadLine();
         }
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Write word: ");
-            string word = Console.ReadLine();
-            RunAsync(word).GetAwaiter().GetResult();
+
+            client.BaseAddress = new Uri("http://localhost:54566/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("text/plain"));
+
+            string word = "";
+            while(!word.Equals("q"))
+            {
+                Console.WriteLine("Write word: ");
+                word = Console.ReadLine();
+                RunAsync(word).GetAwaiter().GetResult();
+            }
         }
 
     }

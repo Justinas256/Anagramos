@@ -21,6 +21,24 @@ namespace Web.Controllers
 
         public ActionResult Anagram(String word)
         {
+            List<string> lastAnagrams;
+            if (Request.Cookies["lastAnagram"] != null)
+            {
+                lastAnagrams = Request.Cookies["lastAnagram"].Value.Split(',').ToList();
+                if (lastAnagrams.Count >= 5)
+                    lastAnagrams.RemoveAt(0);
+                if (!lastAnagrams.Contains(word))
+                    lastAnagrams.Add(word);
+            }
+            else
+            {
+                lastAnagrams = new List<string>();
+                lastAnagrams.Add(word);
+            }
+            var lastAnagramsString = String.Join(",", lastAnagrams);
+            Response.Cookies["lastAnagram"].Value = lastAnagramsString;
+            Response.Cookies["lastAnagram"].Expires = DateTime.Now.AddDays(1);
+
             Solver = MvcApplication.Solver;
             var toFind = new List<String>() { word };
             if(Solver != null)
@@ -28,19 +46,7 @@ namespace Web.Controllers
             return View("Index");
         }
 
-        public String AnagramText(String word)
-        {
-            Solver = MvcApplication.Solver;
-            var toFind = new List<String>() { word };
-            var foundedAnagrams = new List<String>() { word };
-            if (Solver != null)
-                foundedAnagrams = Solver.FindWords(toFind);
-            if (foundedAnagrams == null || foundedAnagrams.Count == 0)
-                return "No anagrams were founded";
-            else 
-                return "Founded" + string.Join(", ", foundedAnagrams);
-        }
-
+        [Route("home/anagrams/{page:int:min(1)=1}")]
         public ViewResult Show(int? page)
         {
             AllWords = MvcApplication.Solver.AllWords;
@@ -52,6 +58,13 @@ namespace Web.Controllers
         public ViewResult Find()
         {
             return View("WordFormSerch");
+        }
+
+        public FileResult DownloadAnagrams()
+        {
+            byte[] fileBytes = System.IO.File.ReadAllBytes(@"C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\zodynas.txt");
+            string fileName = "anagrams.txt";
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
     }

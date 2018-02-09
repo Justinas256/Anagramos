@@ -8,6 +8,14 @@
 
 <h2>Find anagram!</h2>
 
+@{
+    if (Request.Cookies["lastAnagram"] != null)
+    {
+        var value = Request.Cookies["lastAnagram"].Value;
+        <h3>History: @Html.ActionLink(@value, "Anagram", "Home", new { word = @value }, null)</h3>
+    }
+}
+
 <form action="Anagram" method="POST">
     <input type="text" name="word">
     <input type="submit" />

@@ -2,6 +2,20 @@
     <h1>Welcome to Anagram Generator</h1>
 </div>
 
+<a href="/home/DownloadAnagrams" target="_blank">Download anagrams</a>
+<br/>
+@{
+    if (Request.Cookies["lastAnagram"] != null)
+    {
+        History:
+        var lastAnagrams = Request.Cookies["lastAnagram"].Value.Split(',').ToList();
+        foreach (string anagram in lastAnagrams)
+        {
+            <li> @Html.ActionLink(@anagram, "Anagram", "Home", new { word = @anagram }, null)</li>
+        }
+        
+    }
+}
 
 @{
     if (ViewBag.Anagrams != null)
