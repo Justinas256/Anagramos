@@ -12,6 +12,7 @@ namespace Web
     public class MvcApplication : HttpApplication
     {
         public static IAnagramSolver Solver;
+        public static IWordRepository Reader;
 
         protected void Application_Start()
         {
@@ -19,12 +20,13 @@ namespace Web
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
- 
 
             string path = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
-            try { 
-                IWordRepository fileReader = new FileReader(path);
-                Solver = new OneWordFinder(fileReader.GetData());
+            string connectionString = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
+            try {
+                //IWordRepository reader = new FileReader(path);
+                Reader = new DatabaseRepository(connectionString);
+                Solver = new OneWordFinder(Reader.GetData());
             } catch { }
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);

@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CF9FB0D8-E7D8-470A-991D-82360ED558CF}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Implementation.AnagramSolver</RootNamespace>
-    <AssemblyName>Implementation.AnagramSolver</AssemblyName>
+    <ProjectGuid>{A6C2CD3D-8546-4C6C-8B1E-3AFE6456157F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DatabaseConsole</RootNamespace>
+    <AssemblyName>DatabaseConsole</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,14 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseRepository.cs" />
-    <Compile Include="FileReader.cs" />
-    <Compile Include="OneWordFinder.cs" />
-    <Compile Include="OneWordsConsole.cs" />
-    <Compile Include="PhraseFinder.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Implementation.AnagramSolver\Implementation.AnagramSolver.csproj">
+      <Project>{cf9fb0d8-e7d8-470a-991d-82360ed558cf}</Project>
+      <Name>Implementation.AnagramSolver</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Interfaces.AnagramSolver\Interfaces.AnagramSolver.csproj">
       <Project>{b6def0ce-43e9-4a1d-87cd-a7aa47876696}</Project>
       <Name>Interfaces.AnagramSolver</Name>

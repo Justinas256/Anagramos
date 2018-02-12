@@ -12,10 +12,12 @@ namespace Web.Controllers
     {
         
         IAnagramSolver Solver;
+        IWordRepository Reader;
 
         public HomeController()
         {
             Solver = MvcApplication.Solver;
+            Reader = MvcApplication.Reader;
         }
 
         public HomeController(IAnagramSolver solver)
@@ -51,6 +53,12 @@ namespace Web.Controllers
             ViewBag.Anagrams = Solver?.FindWords(new List<String>() { word });
 
             return View("Index");
+        }
+
+        public ActionResult FindWord(String word)
+        {
+            ViewBag.Words = Reader?.GetFilteredWords(word);
+            return View("Search");
         }
 
         [Route("home/anagrams/{page:int:min(1)=1}")]

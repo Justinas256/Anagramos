@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <h1>Welcome to Anagram Generator</h1>
+</div>
+
+<br />
+
+@{
+    if (ViewBag.Words != null)
+    {
+        <p><h2>Founded words:</h2></p>
+        foreach (string word in ViewBag.Words)
+        {
+            <li>@word</li>
+        }
+    }
+    else
+    {
+        <h2>No words were founded</h2>
+    }
+}
+
+

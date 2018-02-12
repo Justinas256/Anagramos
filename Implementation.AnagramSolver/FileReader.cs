@@ -39,5 +39,10 @@ namespace Implementation.AnagramSolver
             }
             return Words.Distinct().ToList();
         }
+
+        public List<string> GetFilteredWords(string fragment)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

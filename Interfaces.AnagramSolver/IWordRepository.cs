@@ -10,5 +10,6 @@ namespace Interfaces.AnagramSolver
     public interface IWordRepository
     {
         List<string> GetData();
+        List<string> GetFilteredWords(string fragment);
     }
 }

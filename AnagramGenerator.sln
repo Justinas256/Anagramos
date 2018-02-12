@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces.AnagramSolver", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpConsole", "HttpConsole\HttpConsole.csproj", "{253453D3-91D4-4A1A-8C24-E49CA9D86184}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseConsole", "DatabaseConsole\DatabaseConsole.csproj", "{A6C2CD3D-8546-4C6C-8B1E-3AFE6456157F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{253453D3-91D4-4A1A-8C24-E49CA9D86184}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{253453D3-91D4-4A1A-8C24-E49CA9D86184}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{253453D3-91D4-4A1A-8C24-E49CA9D86184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6C2CD3D-8546-4C6C-8B1E-3AFE6456157F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C2CD3D-8546-4C6C-8B1E-3AFE6456157F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C2CD3D-8546-4C6C-8B1E-3AFE6456157F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C2CD3D-8546-4C6C-8B1E-3AFE6456157F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
