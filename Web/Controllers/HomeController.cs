@@ -32,6 +32,7 @@ namespace Web.Controllers
 
         public ActionResult Anagram(String word)
         { 
+            //cookies - last searched words
             List<string> lastAnagrams;
             if (Request.Cookies["lastAnagram"] != null)
             {
@@ -50,8 +51,25 @@ namespace Web.Controllers
             Response.Cookies["lastAnagram"].Value = lastAnagramsString;
             Response.Cookies["lastAnagram"].Expires = DateTime.Now.AddDays(1);
 
-            ViewBag.Anagrams = Solver?.FindWords(new List<String>() { word });
+            //find anagrams -- find if there are cached words
+            CachedWordsRepository cachedWords = new CachedWordsRepository();
+            List<int> cachedWordsList = cachedWords.FindCachedWords(word);
+            List<string> anagrams;
 
+            if(cachedWordsList == null || !cachedWordsList.Any())
+            {
+                anagrams = Solver?.FindWords(new List<String>() { word });
+                cachedWords.InsertIntoCashedWords(word, anagrams);
+            } else
+            {
+                anagrams = new List<string>();
+                foreach(int anagramID in cachedWordsList)
+                {
+                    anagrams.Add(cachedWords.FindWordByID(anagramID));
+                }
+            }
+
+            ViewBag.Anagrams = anagrams; 
             return View("Index");
         }
 

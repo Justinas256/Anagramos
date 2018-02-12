@@ -27,5 +27,35 @@ namespace DatabaseConsole
                 }
             }
         }
+
+        /*
+         * USE [Anagrams]
+            GO
+                    SET ANSI_NULLS ON
+                    GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            ALTER PROCEDURE[dbo].[DeleteTable]
+                    @TableName varchar(50)
+            AS
+            BEGIN
+             declare @sql varchar(200);
+                    set @sql = 'Delete From ' + @TableName
+             EXECUTE(@sql)
+            END
+        */
+        public void DeleteTable(string table)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = connection;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "DeleteTable";
+                cmd.Parameters.Add(new SqlParameter("@TableName", table));
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

@@ -17,15 +17,22 @@ namespace DatabaseConsole
             Database db = new Database();
             try
             {
+                Console.WriteLine("Deleting table");
+                db.DeleteTable("CachedWords");
+                db.DeleteTable("Words");
+                Console.WriteLine("Tables deleted");
                 Console.WriteLine("Reading data from file...");
                 List<string> words = reader.GetData();
                 Console.WriteLine("Importing data to database...");
                 db.AddWordsToDatabase(words);
                 Console.WriteLine("Data imported to database");
-            } catch
+            }
+            catch
             {
                 Console.WriteLine("Error");
             }
+
+            Console.ReadLine();
 
 
         }

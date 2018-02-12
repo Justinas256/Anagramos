@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace Implementation.AnagramSolver
 {
+    //to do -- perkelti uzklausas i duombaze i atskira klase
+    
     public class DatabaseRepository : IWordRepository
     {
 
@@ -63,5 +65,6 @@ namespace Implementation.AnagramSolver
             }
             return words;
         }
+
     }
 }
