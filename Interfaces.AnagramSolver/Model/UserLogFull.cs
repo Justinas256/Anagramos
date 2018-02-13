@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Implementation.AnagramSolver.Model
 {
-    public class UserLog
+    public class UserLogFull
     {
         public string IP_address;
         public DateTime Time;
@@ -14,7 +14,7 @@ namespace Implementation.AnagramSolver.Model
         public string CachedWord;
         public List<string> Anagrams;
 
-        public UserLog(string ip, DateTime time, int cachedWord)
+        public UserLogFull(string ip, DateTime time, int cachedWord)
         {
             IP_address = ip;
             Time = time;

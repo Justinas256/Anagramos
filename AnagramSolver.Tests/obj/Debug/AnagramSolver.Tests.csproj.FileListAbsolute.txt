@@ -58,3 +58,6 @@ C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Deb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\System.Web.Http.xml
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\System.Web.Http.WebHost.xml
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Implementation.AnagramSolver.dll.config
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\EntityFramework.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\EntityFramework.xml

@@ -32,8 +32,8 @@ namespace Web
                 //IWordRepository reader = new FileReader(path);
                 Reader = new DatabaseRepository(connectionString);
                 Solver = new OneWordFinder(Reader.GetData());
-                CachedWordService = new CachedWordsService(new CachedWordsRepository(connectionString));
-                UsersLogService = new UserLogService(new UserLogRepository(connectionString));
+                CachedWordService = new CachedWordsService(new CachedWordsSQLRepository(connectionString));
+                UsersLogService = new UserLogService(new UserLogSQLRepository(connectionString));
             } catch { }
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);

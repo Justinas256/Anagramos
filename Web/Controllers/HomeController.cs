@@ -67,7 +67,6 @@ namespace Web.Controllers
             //UserLog
             string ip = Request.UserHostAddress;
             DateTime time = DateTime.Now;
-            //UserLogRepository userLogRepository = new UserLogRepository();
             UsersLogService.AddNewLog(ip, time, word);
 
             ViewBag.Anagrams = anagrams; 

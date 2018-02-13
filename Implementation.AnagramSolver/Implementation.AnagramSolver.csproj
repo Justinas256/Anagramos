@@ -30,8 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,23 +49,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\CachedWordsRepository.cs" />
+    <Compile Include="AnagramEF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnagramEF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnagramEF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnagramEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnagramEF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnagramEF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CachedWord.cs">
+      <DependentUpon>AnagramEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CachedWordsEFRepository.cs" />
+    <Compile Include="Database\CachedWordsSQLRepository.cs" />
     <Compile Include="Database\CachedWordsService.cs" />
     <Compile Include="Database\DatabaseRepository.cs" />
     <Compile Include="Database\UserLogService.cs" />
     <Compile Include="File\FileReader.cs" />
-    <Compile Include="Model\UserLog.cs" />
     <Compile Include="Solver\OneWordFinder.cs" />
     <Compile Include="Console\OneWordsConsole.cs" />
     <Compile Include="Solver\PhraseFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Database\UserLogRepository.cs" />
+    <Compile Include="Database\UserLogSQLRepository.cs" />
+    <Compile Include="UserLog.cs">
+      <DependentUpon>AnagramEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Word.cs">
+      <DependentUpon>AnagramEF.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Interfaces.AnagramSolver\Interfaces.AnagramSolver.csproj">
       <Project>{b6def0ce-43e9-4a1d-87cd-a7aa47876696}</Project>
       <Name>Interfaces.AnagramSolver</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="AnagramEF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AnagramEF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AnagramEF.edmx.diagram">
+      <DependentUpon>AnagramEF.edmx</DependentUpon>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AnagramEF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AnagramEF.edmx</DependentUpon>
+      <LastGenOutput>AnagramEF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AnagramEF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AnagramEF.edmx</DependentUpon>
+      <LastGenOutput>AnagramEF.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

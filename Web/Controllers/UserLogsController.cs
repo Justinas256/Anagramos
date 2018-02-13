@@ -12,16 +12,16 @@ namespace Web.Controllers
 {
     public class UserLogsController : Controller
     {
-        // GET: UserLogs
-        public ActionResult Index()
-        {
-            return View();
+        UserLogService UsersLogService;
+
+        public UserLogsController()
+        { 
+            UsersLogService = MvcApplication.UsersLogService;
         }
 
         public ViewResult Logs(int? page)
         {
-            UserLogService userService = new UserLogService(new UserLogRepository());
-            List<UserLog> userLogs = userService.GetAllLogsAndAnagrams();
+            List<UserLogFull> userLogs = UsersLogService.GetAllLogsAndAnagrams();
             int pageSize = 100;
             int pageNumber = (page ?? 1);
             return View(userLogs.ToPagedList(pageNumber, pageSize));

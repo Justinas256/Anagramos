@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interfaces.AnagramSolver;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Implementation.AnagramSolver
 {
-    public class CachedWordsRepository
+    public class CachedWordsSQLRepository : ICachedWordsRepository
     {
         String _connectionString;
 
-        public CachedWordsRepository(String connectionString)
+        public CachedWordsSQLRepository(String connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public CachedWordsRepository()
+        public CachedWordsSQLRepository()
         {
             _connectionString = @"Data Source=LT-LIT-SC-0428;Initial Catalog=Anagrams;Integrated Security=sspi;";
         }

@@ -9,3 +9,6 @@ C:\Users\justinas.antanaviciu\source\repos\Anagramos\MainApp\bin\Debug\Implement
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\MainApp\bin\Debug\Interfaces.AnagramSolver.pdb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\MainApp\obj\Debug\MainApp.exe
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\MainApp\obj\Debug\MainApp.pdb
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\MainApp\bin\Debug\Implementation.AnagramSolver.dll.config
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\MainApp\bin\Debug\EntityFramework.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\MainApp\bin\Debug\EntityFramework.xml

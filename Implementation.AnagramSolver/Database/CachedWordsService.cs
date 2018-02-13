@@ -9,9 +9,9 @@ namespace Implementation.AnagramSolver
     public class CachedWordsService
     {
 
-        CachedWordsRepository Repository;
+        CachedWordsSQLRepository Repository;
 
-        public CachedWordsService(CachedWordsRepository repository)
+        public CachedWordsService(CachedWordsSQLRepository repository)
         {
             Repository = repository;
         }

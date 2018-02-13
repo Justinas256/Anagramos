@@ -9,31 +9,31 @@ namespace Implementation.AnagramSolver.Database
 {
     public class UserLogService
     {
-        UserLogRepository Repository;
+        UserLogSQLRepository Repository;
         CachedWordsService cachedWordsService;
 
-        public UserLogService(UserLogRepository repository)
+        public UserLogService(UserLogSQLRepository repository)
         {
             Repository = repository;
-            cachedWordsService = new CachedWordsService(new CachedWordsRepository());
+            cachedWordsService = new CachedWordsService(new CachedWordsSQLRepository());
         }
 
         public void AddNewLog(string ip, DateTime time, string cachedWord)
         {
             int cachedWordID = cachedWordsService.GetCachedWordID(cachedWord);
-            UserLog userLog = new UserLog(ip, time, cachedWordID);
+            UserLogFull userLog = new UserLogFull(ip, time, cachedWordID);
             Repository.AddUserLog(userLog);
         }
 
-        public List<UserLog> GetAllLogs()
+        public List<UserLogFull> GetAllLogs()
         {
             return Repository.GetUserLogs();
         }
 
-        public List<UserLog> GetAllLogsAndAnagrams()
+        public List<UserLogFull> GetAllLogsAndAnagrams()
         {
-            List<UserLog> logs = Repository.GetUserLogs();
-            foreach(UserLog log in logs)
+            List<UserLogFull> logs = Repository.GetUserLogs();
+            foreach(UserLogFull log in logs)
             {
                 log.CachedWord = cachedWordsService.GetCachedWordByID(log.CachedWordID);
                 log.Anagrams = cachedWordsService.FindCachedAnagramsString(log.CachedWord);

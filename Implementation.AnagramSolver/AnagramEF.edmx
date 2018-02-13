@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AnagramsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CachedAnagrams">
+          <Key>
+            <PropertyRef Name="CachedWordID" />
+            <PropertyRef Name="AnagramID" />
+          </Key>
+          <Property Name="CachedWordID" Type="int" Nullable="false" />
+          <Property Name="AnagramID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CachedWords">
+          <Key>
+            <PropertyRef Name="CachedWordID" />
+          </Key>
+          <Property Name="CachedWordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CachedWord" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLogs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IP_address" Type="nchar" MaxLength="39" Nullable="false" />
+          <Property Name="CachedWordID" Type="int" Nullable="false" />
+          <Property Name="SearchTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Words">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Word" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CachedAnagrams_CachedWords">
+          <End Role="CachedWords" Type="Self.CachedWords" Multiplicity="1" />
+          <End Role="CachedAnagrams" Type="Self.CachedAnagrams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CachedWords">
+              <PropertyRef Name="CachedWordID" />
+            </Principal>
+            <Dependent Role="CachedAnagrams">
+              <PropertyRef Name="CachedWordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CachedAnagrams_Words">
+          <End Role="Words" Type="Self.Words" Multiplicity="1" />
+          <End Role="CachedAnagrams" Type="Self.CachedAnagrams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Words">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CachedAnagrams">
+              <PropertyRef Name="AnagramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogs_CachedWords">
+          <End Role="CachedWords" Type="Self.CachedWords" Multiplicity="1" />
+          <End Role="UserLogs" Type="Self.UserLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CachedWords">
+              <PropertyRef Name="CachedWordID" />
+            </Principal>
+            <Dependent Role="UserLogs">
+              <PropertyRef Name="CachedWordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AnagramsModelStoreContainer">
+          <EntitySet Name="CachedAnagrams" EntityType="Self.CachedAnagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CachedWords" EntityType="Self.CachedWords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogs" EntityType="Self.UserLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Words" EntityType="Self.Words" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CachedAnagrams_CachedWords" Association="Self.FK_CachedAnagrams_CachedWords">
+            <End Role="CachedWords" EntitySet="CachedWords" />
+            <End Role="CachedAnagrams" EntitySet="CachedAnagrams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CachedAnagrams_Words" Association="Self.FK_CachedAnagrams_Words">
+            <End Role="Words" EntitySet="Words" />
+            <End Role="CachedAnagrams" EntitySet="CachedAnagrams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogs_CachedWords" Association="Self.FK_UserLogs_CachedWords">
+            <End Role="CachedWords" EntitySet="CachedWords" />
+            <End Role="UserLogs" EntitySet="UserLogs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AnagramsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CachedWord">
+          <Key>
+            <PropertyRef Name="CachedWordID" />
+          </Key>
+          <Property Name="CachedWordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CachedWord1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserLogs" Relationship="Self.FK_UserLogs_CachedWords" FromRole="CachedWords" ToRole="UserLogs" />
+          <NavigationProperty Name="Words" Relationship="Self.CachedAnagrams" FromRole="CachedWords" ToRole="Words" />
+        </EntityType>
+        <EntityType Name="UserLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IP_address" Type="String" MaxLength="39" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CachedWordID" Type="Int32" Nullable="false" />
+          <Property Name="SearchTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CachedWord" Relationship="Self.FK_UserLogs_CachedWords" FromRole="UserLogs" ToRole="CachedWords" />
+        </EntityType>
+        <EntityType Name="Word">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Word1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CachedWords" Relationship="Self.CachedAnagrams" FromRole="Words" ToRole="CachedWords" />
+        </EntityType>
+        <Association Name="FK_UserLogs_CachedWords">
+          <End Role="CachedWords" Type="Self.CachedWord" Multiplicity="1" />
+          <End Role="UserLogs" Type="Self.UserLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CachedWords">
+              <PropertyRef Name="CachedWordID" />
+            </Principal>
+            <Dependent Role="UserLogs">
+              <PropertyRef Name="CachedWordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CachedAnagrams">
+          <End Role="CachedWords" Type="Self.CachedWord" Multiplicity="*" />
+          <End Role="Words" Type="Self.Word" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AnagramsEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CachedWords" EntityType="Self.CachedWord" />
+          <EntitySet Name="UserLogs" EntityType="Self.UserLog" />
+          <EntitySet Name="Words" EntityType="Self.Word" />
+          <AssociationSet Name="FK_UserLogs_CachedWords" Association="Self.FK_UserLogs_CachedWords">
+            <End Role="CachedWords" EntitySet="CachedWords" />
+            <End Role="UserLogs" EntitySet="UserLogs" />
+          </AssociationSet>
+          <AssociationSet Name="CachedAnagrams" Association="Self.CachedAnagrams">
+            <End Role="CachedWords" EntitySet="CachedWords" />
+            <End Role="Words" EntitySet="Words" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AnagramsModelStoreContainer" CdmEntityContainer="AnagramsEntities1">
+          <EntitySetMapping Name="CachedWords">
+            <EntityTypeMapping TypeName="AnagramsModel.CachedWord">
+              <MappingFragment StoreEntitySet="CachedWords">
+                <ScalarProperty Name="CachedWordID" ColumnName="CachedWordID" />
+                <ScalarProperty Name="CachedWord1" ColumnName="CachedWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogs">
+            <EntityTypeMapping TypeName="AnagramsModel.UserLog">
+              <MappingFragment StoreEntitySet="UserLogs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IP_address" ColumnName="IP_address" />
+                <ScalarProperty Name="CachedWordID" ColumnName="CachedWordID" />
+                <ScalarProperty Name="SearchTime" ColumnName="SearchTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Words">
+            <EntityTypeMapping TypeName="AnagramsModel.Word">
+              <MappingFragment StoreEntitySet="Words">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Word1" ColumnName="Word" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CachedAnagrams" TypeName="AnagramsModel.CachedAnagrams" StoreEntitySet="CachedAnagrams">
+            <EndProperty Name="CachedWords">
+              <ScalarProperty Name="CachedWordID" ColumnName="CachedWordID" />
+            </EndProperty>
+            <EndProperty Name="Words">
+              <ScalarProperty Name="ID" ColumnName="AnagramID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

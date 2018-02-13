@@ -6,3 +6,8 @@ C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolve
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\Interfaces.AnagramSolver.pdb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\obj\Debug\Implementation.AnagramSolver.dll
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\obj\Debug\Implementation.AnagramSolver.pdb
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\Implementation.AnagramSolver.dll.config
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\EntityFramework.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\EntityFramework.xml
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\EntityFramework.SqlServer.xml

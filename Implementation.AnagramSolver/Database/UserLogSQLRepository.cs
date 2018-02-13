@@ -1,4 +1,5 @@
 ﻿using Implementation.AnagramSolver.Model;
+using Interfaces.AnagramSolver;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace Implementation.AnagramSolver
 {
-    public class UserLogRepository
+    public class UserLogSQLRepository : IUserLogRepository
     {
         String _connectionString;
 
-        public UserLogRepository(String connectionString)
+        public UserLogSQLRepository(String connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public UserLogRepository()
+        public UserLogSQLRepository()
         {
             _connectionString = @"Data Source=LT-LIT-SC-0428;Initial Catalog=Anagrams;Integrated Security=sspi;";
         }
 
-        public void AddUserLog(UserLog userLog)
+        public void AddUserLog(UserLogFull userLog)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -43,9 +44,9 @@ namespace Implementation.AnagramSolver
             }
         }
 
-        public List<UserLog> GetUserLogs()
+        public List<UserLogFull> GetUserLogs()
         {
-            var userLogs = new List<UserLog>();
+            var userLogs = new List<UserLogFull>();
             string ip;
             DateTime time;
             int cachedWordID;
@@ -65,7 +66,7 @@ namespace Implementation.AnagramSolver
                         ip = dr["IP_address"].ToString();
                         time = DateTime.Parse((dr["SearchTime"].ToString()));
                         cachedWordID = Int32.Parse(dr["CachedWordID"].ToString());
-                        userLogs.Add(new UserLog(ip, time, cachedWordID));
+                        userLogs.Add(new UserLogFull(ip, time, cachedWordID));
                     }
                 }
             }
