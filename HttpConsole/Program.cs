@@ -16,8 +16,10 @@ namespace HttpConsole
 
         static async Task<string> GetAnogramAsync(string path, string word)
         {
-            string anagram = "";
-            HttpResponseMessage response = await client.GetAsync(path + "?word=" + word);
+            string anagram = string.Empty;
+            Uri baseUri = new Uri(path);
+            Uri myUri = new Uri(baseUri, "?word=" + word);
+            HttpResponseMessage response = await client.GetAsync(myUri);
 
             if (response.IsSuccessStatusCode)
             {
@@ -30,7 +32,7 @@ namespace HttpConsole
         {
             try
             {
-                string anagram = await GetAnogramAsync("api/anagramsapi/GetAnagram", data);
+                string anagram = await GetAnogramAsync("http://localhost:54566/api/anagramsapi/GetAnagram", data);
                 Console.WriteLine(anagram);
             }
             catch (Exception e)

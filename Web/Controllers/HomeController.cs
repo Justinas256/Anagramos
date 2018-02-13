@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using PagedList;
 using System.Linq;
+using Implementation.AnagramSolver.Database;
 
 namespace Web.Controllers
 {
@@ -13,11 +14,15 @@ namespace Web.Controllers
         
         IAnagramSolver Solver;
         IWordRepository Reader;
+        CachedWordsService CachedWordService;
+        UserLogService UsersLogService;
 
         public HomeController()
         {
             Solver = MvcApplication.Solver;
             Reader = MvcApplication.Reader;
+            CachedWordService = MvcApplication.CachedWordService;
+            UsersLogService = MvcApplication.UsersLogService;
         }
 
         public HomeController(IAnagramSolver solver)
@@ -52,22 +57,18 @@ namespace Web.Controllers
             Response.Cookies["lastAnagram"].Expires = DateTime.Now.AddDays(1);
 
             //find anagrams -- find if there are cached words
-            CachedWordsRepository cachedWords = new CachedWordsRepository();
-            List<int> cachedWordsList = cachedWords.FindCachedWords(word);
-            List<string> anagrams;
-
-            if(cachedWordsList == null || !cachedWordsList.Any())
+            List<string> anagrams = CachedWordService.FindCachedAnagramsString(word);
+            if(anagrams == null)
             {
                 anagrams = Solver?.FindWords(new List<String>() { word });
-                cachedWords.InsertIntoCashedWords(word, anagrams);
-            } else
-            {
-                anagrams = new List<string>();
-                foreach(int anagramID in cachedWordsList)
-                {
-                    anagrams.Add(cachedWords.FindWordByID(anagramID));
-                }
+                CachedWordService.InsertCashedWords(word, anagrams);
             }
+
+            //UserLog
+            string ip = Request.UserHostAddress;
+            DateTime time = DateTime.Now;
+            //UserLogRepository userLogRepository = new UserLogRepository();
+            UsersLogService.AddNewLog(ip, time, word);
 
             ViewBag.Anagrams = anagrams; 
             return View("Index");

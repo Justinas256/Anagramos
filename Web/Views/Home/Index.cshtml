@@ -2,12 +2,15 @@
     <h1>Welcome to Anagram Generator</h1>
 </div>
 
-<a href="/home/DownloadAnagrams" target="_blank">Download anagrams</a>
-<br/>
+<p>
+    <button type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-download-alt"></span> <a href="/home/DownloadAnagrams" target="_blank">Download anagrams</a>
+    </button>
+</p>
 @{
     if (Request.Cookies["lastAnagram"] != null)
     {
-        History:
+        <h3>History:</h3>
         var lastAnagrams = Request.Cookies["lastAnagram"].Value.Split(',').ToList();
         foreach (string anagram in lastAnagrams)
         {

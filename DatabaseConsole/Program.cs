@@ -12,12 +12,13 @@ namespace DatabaseConsole
     {
         static void Main(string[] args)
         {
-            string path = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
+            //string path = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
+            string path = AppConfig.FilePath;
             IWordRepository reader = new FileReader(path);
             Database db = new Database();
             try
             {
-                Console.WriteLine("Deleting table");
+                Console.WriteLine("Deleting tables");
                 db.DeleteTable("CachedWords");
                 db.DeleteTable("Words");
                 Console.WriteLine("Tables deleted");
@@ -27,14 +28,12 @@ namespace DatabaseConsole
                 db.AddWordsToDatabase(words);
                 Console.WriteLine("Data imported to database");
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Error");
+                Console.WriteLine("Error: " + ex.Message);
             }
 
             Console.ReadLine();
-
-
         }
     }
 }
