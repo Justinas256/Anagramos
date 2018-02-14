@@ -43,7 +43,6 @@ namespace Implementation.AnagramSolver
         public List<string> FindCachedAnagramsString (string word)
         {
             List<int> cachedAnagrams = this.FindCachedAnagrams(word);
-            int cachedWordId = Repository.GetCachedWordID(word);
             if (cachedAnagrams != null)
             {
                 List<string> anagramsString = new List<string>();

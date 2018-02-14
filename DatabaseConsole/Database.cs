@@ -10,7 +10,7 @@ namespace DatabaseConsole
 {
     class Database
     {
-        String _connectionString = "Data Source=LT-LIT-SC-0428;Initial Catalog=Anagrams;Integrated Security=sspi;";
+        String _connectionString = "Data Source=LT-LIT-SC-0428;Initial Catalog=AnagramsCF;Integrated Security=sspi;";
 
         public void AddWordsToDatabase(List<string> words)
         {
@@ -19,7 +19,7 @@ namespace DatabaseConsole
                 connection.Open();
                 foreach (string word in words)
                 {
-                    string sql = "INSERT INTO dbo.Words (Word) VALUES(@Word)";
+                    string sql = "INSERT INTO dbo.Words (Word1) VALUES(@Word)";
                     SqlCommand cmd = new SqlCommand(sql, connection);
                     cmd.Parameters.Add(new SqlParameter("@Word", word));
                     cmd.CommandType = CommandType.Text;
@@ -43,7 +43,7 @@ namespace DatabaseConsole
                     set @sql = 'Delete From ' + @TableName
              EXECUTE(@sql)
             END
-        */
+       
         public void DeleteTable(string table)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -54,6 +54,22 @@ namespace DatabaseConsole
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "DeleteTable";
                 cmd.Parameters.Add(new SqlParameter("@TableName", table));
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+     */
+
+        public void DeleteTable(string table)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var cmd = new SqlCommand();
+                cmd.Connection = connection;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Delete From " + table;
+                //cmd.Parameters.Add(new SqlParameter("@Table", table));
                 cmd.ExecuteNonQuery();
             }
         }

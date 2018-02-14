@@ -61,3 +61,9 @@ C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Deb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Implementation.AnagramSolver.dll.config
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\EntityFramework.dll
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\EntityFramework.xml
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EFCF.Core.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EF.Core.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EFCF.Core.pdb
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EFCF.Core.dll.config
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EF.Core.pdb
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EF.Core.dll.config

@@ -16,7 +16,7 @@ namespace Web.Controllers
 
         public UserLogsController()
         { 
-            UsersLogService = MvcApplication.UsersLogService;
+            UsersLogService = Dependencies.UsersLogService;
         }
 
         public ViewResult Logs(int? page)

@@ -1,4 +1,6 @@
-﻿using Interfaces.AnagramSolver;
+﻿using Anagrams.EFCF.Core.Context;
+using Anagrams.EFCF.Core.Model;
+using Interfaces.AnagramSolver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Implementation.AnagramSolver.Database
 {
-    public class CachedWordsEFRepository : ICachedWordsRepository
+    public class CachedWordsEFCFRepository : ICachedWordsRepository
     {
         public string FindWordByID(int wordID)
         {
-            using (var context = new AnagramsEntities())
+            using (var context = new AnagramCFContext())
             {
                 return  context.Words.Find(wordID)?.Word1;
             }       
@@ -19,7 +21,7 @@ namespace Implementation.AnagramSolver.Database
 
         public int FindWordID(string word)
         {
-            using (var context = new AnagramsEntities())
+            using (var context = new AnagramCFContext())
             {
                 return context.Words
                     .Where(b => b.Word1 == word)
@@ -29,7 +31,7 @@ namespace Implementation.AnagramSolver.Database
 
         public List<int> GetCachedAnagrams(int cachedWordID)
         {
-            using (var context = new AnagramsEntities())
+            using (var context = new AnagramCFContext())
             {
                 return context.CachedWords
                     .SingleOrDefault(b => b.CachedWordID == cachedWordID).Words.Select(b => b.ID).ToList();
@@ -38,7 +40,7 @@ namespace Implementation.AnagramSolver.Database
 
         public string GetCachedWordByID(int cachedWordID)
         {
-            using (var context = new AnagramsEntities())
+            using (var context = new AnagramCFContext())
             {
                 return context.CachedWords.Find(cachedWordID).CachedWord1;
             }
@@ -46,17 +48,24 @@ namespace Implementation.AnagramSolver.Database
 
         public int GetCachedWordID(string word)
         {
-            using (var context = new AnagramsEntities())
+            using (var context = new AnagramCFContext())
             {
-                return context.CachedWords
+                var cachedWord = context.CachedWords
                     .Where(b => b.CachedWord1 == word)
-                    .FirstOrDefault().CachedWordID;
+                    .FirstOrDefault();
+                if(cachedWord == null)
+                {
+                    return -1;
+                } else
+                {
+                    return cachedWord.CachedWordID;
+                }
             }
         }
 
         public void InsertIntoCashedAnagrams(int cachedWordID, List<int> anagramsID)
         {
-            using (var context = new AnagramsEntities())
+            using (var context = new AnagramCFContext())
             {
                 var cachedWord = context.CachedWords.SingleOrDefault(b => b.CachedWordID == cachedWordID);
                 if (cachedWord != null)
@@ -68,7 +77,7 @@ namespace Implementation.AnagramSolver.Database
 
         public void InsertIntoCashedWords(string word)
         {
-            using (var context = new AnagramsEntities())
+            using (var context = new AnagramCFContext())
             {
                 var cachedWord = new CachedWord() { CachedWord1 = word };
                 context.CachedWords.Add(cachedWord);

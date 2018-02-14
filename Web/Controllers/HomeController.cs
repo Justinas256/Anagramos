@@ -20,10 +20,10 @@ namespace Web.Controllers
 
         public HomeController()
         {
-            Solver = MvcApplication.Solver;
-            Reader = MvcApplication.Reader;
-            CachedWordService = MvcApplication.CachedWordService;
-            UsersLogService = MvcApplication.UsersLogService;
+            Solver = Dependencies.Solver;
+            Reader = Dependencies.WordRepository;
+            CachedWordService = Dependencies.CachedWordService;
+            UsersLogService = Dependencies.UsersLogService;
         }
 
         public HomeController(IAnagramSolver solver)
@@ -67,7 +67,6 @@ namespace Web.Controllers
 
             //UserLol
             string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
-            //string ip = Request.UserHostAddress;
             DateTime time = DateTime.Now;
             UsersLogService.AddNewLog(ip, time, word);
 

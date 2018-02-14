@@ -11,3 +11,9 @@ C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolve
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\EntityFramework.xml
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\Anagrams.EF.Core.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\Anagrams.EFCF.Core.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\Anagrams.EF.Core.pdb
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\Anagrams.EF.Core.dll.config
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\Anagrams.EFCF.Core.pdb
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\Implementation.AnagramSolver\bin\Debug\Anagrams.EFCF.Core.dll.config

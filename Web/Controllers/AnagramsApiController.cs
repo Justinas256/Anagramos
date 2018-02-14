@@ -1,4 +1,5 @@
-﻿using Interfaces.AnagramSolver;
+﻿using Implementation.AnagramSolver;
+using Interfaces.AnagramSolver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace Web.Controllers
 
         public AnagramsApiController()
         {
-            Solver = MvcApplication.Solver;
+            Solver = Dependencies.Solver;
         }
 
         public AnagramsApiController(IAnagramSolver solver)

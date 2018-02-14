@@ -7,23 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Implementation.AnagramSolver
+namespace Anagrams.EF.Core
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Word
+    public partial class CachedWord
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Word()
+        public CachedWord()
         {
-            this.CachedWords = new HashSet<CachedWord>();
+            this.UserLogs = new HashSet<UserLog>();
+            this.Words = new HashSet<Word>();
         }
     
-        public int ID { get; set; }
-        public string Word1 { get; set; }
+        public int CachedWordID { get; set; }
+        public string CachedWord1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CachedWord> CachedWords { get; set; }
+        public virtual ICollection<UserLog> UserLogs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Word> Words { get; set; }
     }
 }

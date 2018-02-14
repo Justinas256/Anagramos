@@ -232,6 +232,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Anagrams.EFCF.Core\Anagrams.EFCF.Core.csproj">
+      <Project>{760f1e5a-908f-410e-84a4-d8ea3323034a}</Project>
+      <Name>Anagrams.EFCF.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Implementation.AnagramSolver\Implementation.AnagramSolver.csproj">
       <Project>{cf9fb0d8-e7d8-470a-991d-82360ed558cf}</Project>
       <Name>Implementation.AnagramSolver</Name>

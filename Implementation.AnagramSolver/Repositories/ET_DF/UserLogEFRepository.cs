@@ -1,4 +1,5 @@
-﻿using Implementation.AnagramSolver.Model;
+﻿using Anagrams.EF.Core;
+using Implementation.AnagramSolver.Model;
 using Interfaces.AnagramSolver;
 using System;
 using System.Collections.Generic;

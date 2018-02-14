@@ -1,4 +1,5 @@
-﻿using Implementation.AnagramSolver;
+﻿using Anagrams.EFCF.Core.Context;
+using Implementation.AnagramSolver;
 using Implementation.AnagramSolver.Database;
 using Interfaces.AnagramSolver;
 using System.Web;
@@ -12,10 +13,6 @@ namespace Web
 {
     public class MvcApplication : HttpApplication
     {
-        public static IAnagramSolver Solver;
-        public static IWordRepository Reader;
-        public static CachedWordsService CachedWordService;
-        public static UserLogService UsersLogService;
 
         protected void Application_Start()
         {
@@ -24,16 +21,14 @@ namespace Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            //string path = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
-            //string connectionString = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"];
-            string path = AppConfig.FilePath;
-            string connectionString = AppConfig.ConnectionString;
-            try {
-                Reader = new WordsEFRepository();
-                Solver = new OneWordFinder(Reader.GetData());
-                CachedWordService = new CachedWordsService(new CachedWordsSQLRepository(connectionString));
-                UsersLogService = new UserLogService(new UserLogEFRepository());
-            } catch { }
+            /*
+            using (var context = new AnagramCFContext())
+            {
+                var cachedWord = new Anagrams.EFCF.Core.Model.CachedWord() { CachedWord1 = "labas" };
+                context.CachedWords.Add(cachedWord);
+                context.SaveChanges();
+            }
+            */
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

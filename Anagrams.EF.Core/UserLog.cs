@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Implementation.AnagramSolver
+namespace Anagrams.EF.Core
 {
     using System;
     using System.Collections.Generic;
