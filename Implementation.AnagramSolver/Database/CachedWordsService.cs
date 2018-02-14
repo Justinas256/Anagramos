@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interfaces.AnagramSolver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace Implementation.AnagramSolver
     public class CachedWordsService
     {
 
-        CachedWordsSQLRepository Repository;
+        ICachedWordsRepository Repository;
 
-        public CachedWordsService(CachedWordsSQLRepository repository)
+        public CachedWordsService(ICachedWordsRepository repository)
         {
             Repository = repository;
         }

@@ -1,4 +1,5 @@
 ﻿using Implementation.AnagramSolver.Model;
+using Interfaces.AnagramSolver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace Implementation.AnagramSolver.Database
 {
     public class UserLogService
     {
-        UserLogSQLRepository Repository;
+        IUserLogRepository Repository;
         CachedWordsService cachedWordsService;
 
-        public UserLogService(UserLogSQLRepository repository)
+        public UserLogService(IUserLogRepository repository)
         {
             Repository = repository;
             cachedWordsService = new CachedWordsService(new CachedWordsSQLRepository());

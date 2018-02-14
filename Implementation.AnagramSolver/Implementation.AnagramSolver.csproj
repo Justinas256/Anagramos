@@ -70,7 +70,8 @@
     <Compile Include="Database\CachedWordsEFRepository.cs" />
     <Compile Include="Database\CachedWordsSQLRepository.cs" />
     <Compile Include="Database\CachedWordsService.cs" />
-    <Compile Include="Database\DatabaseRepository.cs" />
+    <Compile Include="Database\WordsEFRepository.cs" />
+    <Compile Include="Database\WordSQLRepository.cs" />
     <Compile Include="Database\UserLogService.cs" />
     <Compile Include="File\FileReader.cs" />
     <Compile Include="Solver\OneWordFinder.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="UserLog.cs">
       <DependentUpon>AnagramEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\UserLogEFRepository.cs" />
     <Compile Include="Word.cs">
       <DependentUpon>AnagramEF.tt</DependentUpon>
     </Compile>

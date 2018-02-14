@@ -29,11 +29,10 @@ namespace Web
             string path = AppConfig.FilePath;
             string connectionString = AppConfig.ConnectionString;
             try {
-                //IWordRepository reader = new FileReader(path);
-                Reader = new DatabaseRepository(connectionString);
+                Reader = new WordsEFRepository();
                 Solver = new OneWordFinder(Reader.GetData());
                 CachedWordService = new CachedWordsService(new CachedWordsSQLRepository(connectionString));
-                UsersLogService = new UserLogService(new UserLogSQLRepository(connectionString));
+                UsersLogService = new UserLogService(new UserLogEFRepository());
             } catch { }
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);

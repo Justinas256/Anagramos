@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Implementation.AnagramSolver.Database
 {
-    class CachedWordsEFRepository : ICachedWordsRepository
+    public class CachedWordsEFRepository : ICachedWordsRepository
     {
         public string FindWordByID(int wordID)
         {
             using (var context = new AnagramsEntities())
             {
-                return context.Words.Find(wordID).Word1;
+                return  context.Words.Find(wordID)?.Word1;
             }       
         }
 
@@ -32,7 +32,7 @@ namespace Implementation.AnagramSolver.Database
             using (var context = new AnagramsEntities())
             {
                 return context.CachedWords
-                    .Where(b => b.CachedWordID == cachedWordID).Select(b => b.CachedWordID).ToList();
+                    .SingleOrDefault(b => b.CachedWordID == cachedWordID).Words.Select(b => b.ID).ToList();
             }
         }
 
@@ -58,11 +58,10 @@ namespace Implementation.AnagramSolver.Database
         {
             using (var context = new AnagramsEntities())
             {
-                foreach(int anagramID in anagramsID)
+                var cachedWord = context.CachedWords.SingleOrDefault(b => b.CachedWordID == cachedWordID);
+                if (cachedWord != null)
                 {
-                    //var cachedAnagram = new CachedAnagram() { CachedWord1 = word };
-                    //context.CachedWords.Add(cachedWord);
-                    //context.SaveChanges();
+                    cachedWord.Words = context.Words.Where(b => anagramsID.Contains(b.ID)).ToList();
                 }
             }
         }

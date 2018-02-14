@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using PagedList;
 using System.Linq;
 using Implementation.AnagramSolver.Database;
+using System.Net;
 
 namespace Web.Controllers
 {
@@ -64,8 +65,9 @@ namespace Web.Controllers
                 CachedWordService.InsertCashedWords(word, anagrams);
             }
 
-            //UserLog
-            string ip = Request.UserHostAddress;
+            //UserLol
+            string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+            //string ip = Request.UserHostAddress;
             DateTime time = DateTime.Now;
             UsersLogService.AddNewLog(ip, time, word);
 

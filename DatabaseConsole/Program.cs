@@ -19,6 +19,8 @@ namespace DatabaseConsole
             try
             {
                 Console.WriteLine("Deleting tables");
+                db.DeleteTable("UserLogs");
+                db.DeleteTable("CachedAnagrams");
                 db.DeleteTable("CachedWords");
                 db.DeleteTable("Words");
                 Console.WriteLine("Tables deleted");

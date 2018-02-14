@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Implementation.AnagramSolver
 {
     
-    public class DatabaseRepository : IWordRepository
+    public class WordSQLRepository : IWordRepository
     {
         String _connectionString;
 
-        public DatabaseRepository(String connectionString)
+        public WordSQLRepository(String connectionString)
         {
             _connectionString = connectionString;
         }
