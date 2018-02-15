@@ -13,10 +13,10 @@ namespace Implementation.AnagramSolver.Database
         IUserLogRepository Repository;
         CachedWordsService cachedWordsService;
 
-        public UserLogService(IUserLogRepository repository)
+        public UserLogService(IUserLogRepository repository, CachedWordsService cachedWordService)
         {
             Repository = repository;
-            cachedWordsService = Dependencies.CachedWordService;
+            cachedWordsService = cachedWordService;
         }
 
         public void AddNewLog(string ip, DateTime time, string cachedWord)

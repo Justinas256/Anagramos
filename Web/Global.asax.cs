@@ -16,6 +16,7 @@ namespace Web
 
         protected void Application_Start()
         {
+            IocConfig.ConfigureDependencyInjection();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -29,6 +30,8 @@ namespace Web
                 context.SaveChanges();
             }
             */
+
+       
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

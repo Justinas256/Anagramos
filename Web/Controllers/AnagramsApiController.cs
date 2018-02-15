@@ -14,10 +14,12 @@ namespace Web.Controllers
     {
         IAnagramSolver Solver;
 
+        /*
         public AnagramsApiController()
         {
             Solver = Dependencies.Solver;
         }
+        */
 
         public AnagramsApiController(IAnagramSolver solver)
         {

@@ -31,7 +31,7 @@ namespace Implementation.AnagramSolver
         public static void SetServices()
         {
             CachedWordService = new CachedWordsService(CachedWordsRepositoy);
-            UsersLogService = new UserLogService(UserLogRepository);
+            UsersLogService = new UserLogService(UserLogRepository, new CachedWordsService(new CachedWordsEFCFRepository()));
         }
 
         public static void SetSQL()

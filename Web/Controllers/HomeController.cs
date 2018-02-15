@@ -18,6 +18,7 @@ namespace Web.Controllers
         CachedWordsService CachedWordService;
         UserLogService UsersLogService;
 
+        /*
         public HomeController()
         {
             Solver = Dependencies.Solver;
@@ -25,10 +26,14 @@ namespace Web.Controllers
             CachedWordService = Dependencies.CachedWordService;
             UsersLogService = Dependencies.UsersLogService;
         }
+        */
 
-        public HomeController(IAnagramSolver solver)
+        public HomeController(IAnagramSolver solver, IWordRepository reader, CachedWordsService cachedWordService, UserLogService usersLogService)
         {
             Solver = solver;
+            Reader = reader;
+            CachedWordService = cachedWordService;
+            UsersLogService = usersLogService;
         }
 
         public ActionResult Index()

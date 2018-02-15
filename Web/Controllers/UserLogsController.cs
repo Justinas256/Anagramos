@@ -14,9 +14,9 @@ namespace Web.Controllers
     {
         UserLogService UsersLogService;
 
-        public UserLogsController()
+        public UserLogsController(UserLogService usersLogService)
         { 
-            UsersLogService = Dependencies.UsersLogService;
+            UsersLogService = usersLogService;
         }
 
         public ViewResult Logs(int? page)
