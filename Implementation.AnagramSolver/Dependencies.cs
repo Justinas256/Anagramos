@@ -24,7 +24,7 @@ namespace Implementation.AnagramSolver
 
         static Dependencies()
         {
-            SetEF_DF();
+            SetEF_CF();
             Solver = new OneWordFinder(WordRepository.GetData());
         }
 

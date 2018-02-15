@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Anagrams.EFCF.Core.Model
             this.Words = new HashSet<Word>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CachedWordID { get; set; }
         public string CachedWord1 { get; set; }
 

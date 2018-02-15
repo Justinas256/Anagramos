@@ -70,7 +70,9 @@ namespace Implementation.AnagramSolver.Database
                 var cachedWord = context.CachedWords.SingleOrDefault(b => b.CachedWordID == cachedWordID);
                 if (cachedWord != null)
                 {
+                    context.CachedWords.Attach(cachedWord);
                     cachedWord.Words = context.Words.Where(b => anagramsID.Contains(b.ID)).ToList();
+                    context.SaveChanges();
                 }
             }
         }

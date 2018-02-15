@@ -16,7 +16,7 @@ namespace Implementation.AnagramSolver.Database
         public UserLogService(IUserLogRepository repository)
         {
             Repository = repository;
-            cachedWordsService = new CachedWordsService(new CachedWordsSQLRepository());
+            cachedWordsService = Dependencies.CachedWordService;
         }
 
         public void AddNewLog(string ip, DateTime time, string cachedWord)
