@@ -12,10 +12,10 @@ namespace DatabaseConsole
     {
         static void Main(string[] args)
         {
-            //string path = System.Configuration.ConfigurationManager.AppSettings["FilePath"];
             string path = AppConfig.FilePath;
             IWordRepository reader = new FileReader(path);
-            Database db = new Database();
+            //IDatabase db = new DatabaseSQL();
+            IDatabase db = new DatabaseEFCF();
             try
             {
                 Console.WriteLine("Deleting tables");

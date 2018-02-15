@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseConsole
 {
-    class Database
+    class DatabaseSQL : IDatabase
     {
         String _connectionString = "Data Source=LT-LIT-SC-0428;Initial Catalog=AnagramsCF;Integrated Security=sspi;";
 
@@ -43,6 +43,7 @@ namespace DatabaseConsole
                     set @sql = 'Delete From ' + @TableName
              EXECUTE(@sql)
             END
+        */
        
         public void DeleteTable(string table)
         {
@@ -58,7 +59,7 @@ namespace DatabaseConsole
             }
         }
 
-     */
+        /*
 
         public void DeleteTable(string table)
         {
@@ -73,5 +74,7 @@ namespace DatabaseConsole
                 cmd.ExecuteNonQuery();
             }
         }
+
+         */
     }
 }

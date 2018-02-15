@@ -22,8 +22,7 @@ namespace Anagrams.EFCF.Core.Context
             modelBuilder.Entity<UserLog>()
                 .HasRequired<CachedWord>(s => s.CachedWord)
                 .WithMany(g => g.UserLogs)
-                .HasForeignKey<int>(s => s.CachedWordID)
-                .WillCascadeOnDelete();
+                .HasForeignKey<int>(s => s.CachedWordID);
 
             modelBuilder.Entity<CachedWord>()
                 .HasMany<Word>(s => s.Words)
