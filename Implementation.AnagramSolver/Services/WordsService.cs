@@ -53,6 +53,11 @@ namespace Implementation.AnagramSolver.Services
 
         public void DeleteWord(string word)
         {
+            if (word == null || word.Length < 2)
+            {
+                throw new Exception("Invalid word!");
+            }
+
             try
             {
                 int wordID = WordsRepository.FindWordID(word);

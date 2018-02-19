@@ -3,7 +3,7 @@
 </div>
 
 @{
-    ViewBag.Title = "Manage words word";
+    ViewBag.Title = "Edit words word";
 }
 
 <h3>Add word!</h3>
@@ -18,7 +18,7 @@
     }
 }
 
-<form action="AddWord">
+<form action="/EditWords/AddWord">
     <div class="form-group">
         <label>Word:</label>
         <input class="form-control" id="word" name="word">
@@ -39,7 +39,7 @@
     }
 }
 
-<form action="DeleteWord">
+<form action="/EditWords/DeleteWord">
     <div class="form-group">
         <label>Word:</label>
         <input class="form-control" id="word" name="word">
@@ -60,7 +60,7 @@
     }
 }
 
-<form action="UpdateWord">
+<form action="/EditWords/UpdateWord">
     <div class="form-group">
         <label>Old word:</label>
         <input class="form-control" id="oldWord" name="oldWord">

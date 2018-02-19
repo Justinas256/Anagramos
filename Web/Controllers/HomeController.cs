@@ -19,6 +19,7 @@ namespace Web.Controllers
         WordsService WordsService;
         CachedWordsService CachedWordService;
         UserLogService UsersLogService;
+        LogActivity LogActivities;
 
         /*
         public HomeController()
@@ -36,6 +37,7 @@ namespace Web.Controllers
             WordsService = wordsService;
             CachedWordService = cachedWordService;
             UsersLogService = usersLogService;
+            LogActivities = new LogActivity(UsersLogService);
         }
 
         public ActionResult Index()
@@ -43,23 +45,20 @@ namespace Web.Controllers
             return View();
         }
 
+        //find word anagrams
         public ActionResult Anagram(String word)
         {
-            string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+            string ip = LogActivities.GetIPAddress();
 
             if (UsersLogService.IsPermittedToView(ip))
             {
                 //cookies - last searched words
-                WebCookies cookies = new WebCookies();
-                cookies.AddNewWordToHistory(Request, Response, word);
-
+                WebCookies.AddNewWordToHistory(Request, Response, word);
                 //find anagrams -- find if there are cached words
                 List<string> anagrams = CachedWordService.FindAnagrams(word);
                 ViewBag.Anagrams = anagrams;
-
                 //UserLog
-                DateTime time = DateTime.Now;
-                UsersLogService.AddNewLogView(ip, time, word);                
+                LogActivities.LogWordViewed(word);
             }
             else
             {
@@ -74,6 +73,7 @@ namespace Web.Controllers
             return View("Search");
         }
 
+        //show all words
         [Route("home/anagrams/{page:int:min(1)=1}")]
         public ViewResult Show(int? page)
         {
@@ -82,11 +82,13 @@ namespace Web.Controllers
             return View(Solver.AllWords.ToPagedList(pageNumber, pageSize));
         }
 
+        //page to search for a word
         public ViewResult Find()
         {
             return View("WordFormSerch");
         }
 
+        //download all anagrams in .txt file
         public FileResult DownloadAnagrams()
         {
             byte[] fileBytes = System.IO.File.ReadAllBytes(@"C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\zodynas.txt");
@@ -94,73 +96,7 @@ namespace Web.Controllers
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
-        public ActionResult AddWord(String word)
-        {
-            if(word != null && word.Length > 1)
-            {
-                try
-                {
-                    WordsService.AddNewWord(word);
-                    ViewBag.Added = true;
-
-                    string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
-                    DateTime time = DateTime.Now;
-                    UsersLogService.AddNewLogAdded(ip, time, word);
-                }
-                catch
-                {
-                    ViewBag.Added = false;
-                }
-            }
-            return View("ManageWords");
-        }
-
-        public ActionResult DeleteWord(String word)
-        {
-            if (word != null && word.Length > 1)
-            {
-                try
-                {
-                    WordsService.DeleteWord(word);
-                    ViewBag.Deleted = true;
-
-                    string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
-                    DateTime time = DateTime.Now;
-                    UsersLogService.AddNewLogDeleted(ip, time, word);
-                }
-                catch
-                {
-                    ViewBag.Deleted = false;
-                }
-            }
-            return View("ManageWords");
-        }
-
-        public ActionResult UpdateWord(String oldWord, String newWord)
-        {
-            if (oldWord != null && oldWord.Length > 1 && newWord != null && newWord.Length > 1)
-            {
-                try
-                {
-                    WordsService.UpdateWord(oldWord, newWord);
-                    ViewBag.Updated = true;
-
-                    string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
-                    DateTime time = DateTime.Now;
-                    UsersLogService.AddNewLogUpdated(ip, time, newWord);
-                }
-                catch
-                {
-                    ViewBag.Updated = false;
-                }
-            }
-            return View("ManageWords");
-        }
-
-        public ViewResult ManageWords()
-        {
-            return View();
-        }
+       
 
     }
 }

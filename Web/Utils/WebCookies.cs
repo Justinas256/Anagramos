@@ -5,10 +5,10 @@ using System.Web;
 
 namespace Web.Utils
 {
-    public class WebCookies
+    public static class WebCookies
     {
 
-        public void AddNewWordToHistory(HttpRequestBase request, HttpResponseBase response, string word)
+        public static void AddNewWordToHistory(HttpRequestBase request, HttpResponseBase response, string word)
         {
             List<string> lastAnagrams;
             if (request.Cookies["lastAnagram"] != null)
