@@ -73,5 +73,10 @@ namespace Implementation.AnagramSolver
             return userLogs;
         }
 
+        public int CountActionsByIP(string ip_address, string action)
+        {
+            //throw new NotImplementedException();
+            return 0;
+        }
     }
 }

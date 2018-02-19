@@ -11,10 +11,14 @@ namespace Implementation.AnagramSolver
     {
 
         ICachedWordsRepository Repository;
+        IAnagramSolver Solver;
+        IWordRepository WordsRepository;
 
-        public CachedWordsService(ICachedWordsRepository repository)
+        public CachedWordsService(ICachedWordsRepository repository, IWordRepository wordsRepository, IAnagramSolver solver)
         {
             Repository = repository;
+            Solver = solver;
+            WordsRepository = wordsRepository;
         }
 
         public int GetCachedWordID(string word)
@@ -49,7 +53,7 @@ namespace Implementation.AnagramSolver
                 string anagramString;
                 foreach (int anagram in cachedAnagrams)
                 {
-                    anagramString = Repository.FindWordByID(anagram);
+                    anagramString = WordsRepository.FindWordByID(anagram);
                     anagramsString.Add(anagramString);
                 }
                 return anagramsString;
@@ -67,46 +71,23 @@ namespace Implementation.AnagramSolver
                 int anagramId;
                 foreach (string anagram in anagrams)
                 {
-                    anagramId = Repository.FindWordID(anagram);
+                    anagramId = WordsRepository.FindWordID(anagram);
                     anagramsID.Add(anagramId);
                 }
                 Repository.InsertIntoCashedAnagrams(cachedWordId, anagramsID);
             }
         }
 
-
-        //-------not used------
-        /*
-        public void InsertIntoCashedWords(string word, List<string> anagrams)
+        public List<string> FindAnagrams(string word)
         {
-            int anagramId;
-            List<int> anagramsID = new List<int>();
-            foreach (string anagram in anagrams)
+            List<string> anagrams = FindCachedAnagramsString(word);
+            if (anagrams == null)
             {
-                anagramId = Repository.FindWordID(anagram);
-                anagramsID.Add(anagramId);
+                anagrams = Solver?.FindWords(new List<String>() { word });
+                InsertCashedWords(word, anagrams);
             }
-            Repository.InsertIntoCashedWords(word, anagramsID);
+            return anagrams;
         }
-
-        public List<int> FindCachedWords(string word)
-        {
-            int wordId = Repository.FindWordID(word);
-            if (wordId == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return Repository.FindCachedWords(wordId);
-            }
-        }
-
-        public string FindWordByID(int wordID)
-        {
-            return Repository.FindWordByID(wordID);
-        }
-        */
 
     }
 }

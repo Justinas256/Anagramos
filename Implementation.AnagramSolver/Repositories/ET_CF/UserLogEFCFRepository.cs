@@ -20,7 +20,8 @@ namespace Implementation.AnagramSolver
                 {
                     IP_address = userLog.IP_address,
                     CachedWordID = userLog.CachedWordID,
-                    SearchTime = userLog.Time
+                    SearchTime = userLog.Time,
+                    Action = userLog.Action
                 };
                 context.UserLogs.Add(newUserLog);
                 context.SaveChanges();
@@ -32,8 +33,18 @@ namespace Implementation.AnagramSolver
             using (var context = new AnagramCFContext())
             {
                 List<UserLog> userLogs = context.UserLogs.ToList();
-                return userLogs.Select(a => new UserLogFull(a.IP_address, a.SearchTime, a.CachedWordID)).ToList();
+                return userLogs.Select(a => new UserLogFull(a.IP_address, a.SearchTime, a.CachedWordID, a.Action)).ToList();
             }
         }
+
+        public int CountActionsByIP(string ip_address, string action)
+        {
+            using (var context = new AnagramCFContext())
+            {
+                List<UserLog> userLogs = context.UserLogs.ToList();
+                return userLogs.Where(a => a.IP_address == ip_address && a.Action == action).Count();
+            }
+        }
+
     }
 }

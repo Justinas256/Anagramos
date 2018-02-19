@@ -7,6 +7,8 @@ using PagedList;
 using System.Linq;
 using Implementation.AnagramSolver.Database;
 using System.Net;
+using Implementation.AnagramSolver.Services;
+using Web.Utils;
 
 namespace Web.Controllers
 {
@@ -14,7 +16,7 @@ namespace Web.Controllers
     {
         
         IAnagramSolver Solver;
-        IWordRepository Reader;
+        WordsService WordsService;
         CachedWordsService CachedWordService;
         UserLogService UsersLogService;
 
@@ -28,10 +30,10 @@ namespace Web.Controllers
         }
         */
 
-        public HomeController(IAnagramSolver solver, IWordRepository reader, CachedWordsService cachedWordService, UserLogService usersLogService)
+        public HomeController(IAnagramSolver solver, WordsService wordsService, CachedWordsService cachedWordService, UserLogService usersLogService)
         {
             Solver = solver;
-            Reader = reader;
+            WordsService = wordsService;
             CachedWordService = cachedWordService;
             UsersLogService = usersLogService;
         }
@@ -42,46 +44,33 @@ namespace Web.Controllers
         }
 
         public ActionResult Anagram(String word)
-        { 
-            //cookies - last searched words
-            List<string> lastAnagrams;
-            if (Request.Cookies["lastAnagram"] != null)
+        {
+            string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+
+            if (UsersLogService.IsPermittedToView(ip))
             {
-                lastAnagrams = Request.Cookies["lastAnagram"].Value.Split(',').ToList();
-                if (lastAnagrams.Count >= 5)
-                    lastAnagrams.RemoveAt(0);
-                if (!lastAnagrams.Contains(word))
-                    lastAnagrams.Add(word);
+                //cookies - last searched words
+                WebCookies cookies = new WebCookies();
+                cookies.AddNewWordToHistory(Request, Response, word);
+
+                //find anagrams -- find if there are cached words
+                List<string> anagrams = CachedWordService.FindAnagrams(word);
+                ViewBag.Anagrams = anagrams;
+
+                //UserLog
+                DateTime time = DateTime.Now;
+                UsersLogService.AddNewLogView(ip, time, word);                
             }
             else
             {
-                lastAnagrams = new List<string>();
-                lastAnagrams.Add(word);
+                ViewBag.Permitted = false;
             }
-            var lastAnagramsString = String.Join(",", lastAnagrams);
-            Response.Cookies["lastAnagram"].Value = lastAnagramsString;
-            Response.Cookies["lastAnagram"].Expires = DateTime.Now.AddDays(1);
-
-            //find anagrams -- find if there are cached words
-            List<string> anagrams = CachedWordService.FindCachedAnagramsString(word);
-            if(anagrams == null)
-            {
-                anagrams = Solver?.FindWords(new List<String>() { word });
-                CachedWordService.InsertCashedWords(word, anagrams);
-            }
-
-            //UserLol
-            string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
-            DateTime time = DateTime.Now;
-            UsersLogService.AddNewLog(ip, time, word);
-
-            ViewBag.Anagrams = anagrams; 
             return View("Index");
         }
 
         public ActionResult FindWord(String word)
         {
-            ViewBag.Words = Reader?.GetFilteredWords(word);
+            ViewBag.Words = WordsService?.GetFilteredWords(word);
             return View("Search");
         }
 
@@ -103,6 +92,74 @@ namespace Web.Controllers
             byte[] fileBytes = System.IO.File.ReadAllBytes(@"C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\zodynas.txt");
             string fileName = "anagrams.txt";
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
+        public ActionResult AddWord(String word)
+        {
+            if(word != null && word.Length > 1)
+            {
+                try
+                {
+                    WordsService.AddNewWord(word);
+                    ViewBag.Added = true;
+
+                    string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+                    DateTime time = DateTime.Now;
+                    UsersLogService.AddNewLogAdded(ip, time, word);
+                }
+                catch
+                {
+                    ViewBag.Added = false;
+                }
+            }
+            return View("ManageWords");
+        }
+
+        public ActionResult DeleteWord(String word)
+        {
+            if (word != null && word.Length > 1)
+            {
+                try
+                {
+                    WordsService.DeleteWord(word);
+                    ViewBag.Deleted = true;
+
+                    string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+                    DateTime time = DateTime.Now;
+                    UsersLogService.AddNewLogDeleted(ip, time, word);
+                }
+                catch
+                {
+                    ViewBag.Deleted = false;
+                }
+            }
+            return View("ManageWords");
+        }
+
+        public ActionResult UpdateWord(String oldWord, String newWord)
+        {
+            if (oldWord != null && oldWord.Length > 1 && newWord != null && newWord.Length > 1)
+            {
+                try
+                {
+                    WordsService.UpdateWord(oldWord, newWord);
+                    ViewBag.Updated = true;
+
+                    string ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+                    DateTime time = DateTime.Now;
+                    UsersLogService.AddNewLogUpdated(ip, time, newWord);
+                }
+                catch
+                {
+                    ViewBag.Updated = false;
+                }
+            }
+            return View("ManageWords");
+        }
+
+        public ViewResult ManageWords()
+        {
+            return View();
         }
 
     }

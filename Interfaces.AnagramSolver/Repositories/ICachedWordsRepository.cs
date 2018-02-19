@@ -8,12 +8,11 @@ namespace Interfaces.AnagramSolver
 {
     public interface ICachedWordsRepository
     {
+        List<int> GetCachedAnagrams(int cachedWordID);
         int GetCachedWordID(string word);
         string GetCachedWordByID(int cachedWordID);
         void InsertIntoCashedAnagrams(int cachedWordID, List<int> anagramsID);
         void InsertIntoCashedWords(string word);
-        List<int> GetCachedAnagrams(int cachedWordID);
-        int FindWordID(string word);
-        string FindWordByID(int wordID);
+        
     }
 }

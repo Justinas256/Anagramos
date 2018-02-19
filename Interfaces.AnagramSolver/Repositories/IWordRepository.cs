@@ -11,5 +11,11 @@ namespace Interfaces.AnagramSolver
     {
         List<string> GetData();
         List<string> GetFilteredWords(string fragment);
+        string FindWordByID(int wordID);
+        int FindWordID(string word);
+        void AddNewWord(string word);
+        void UpdateWord(int wordID, string newWord);
+        void DeleteWord(int wordID);
+
     }
 }

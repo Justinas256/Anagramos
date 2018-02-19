@@ -13,12 +13,18 @@ namespace Implementation.AnagramSolver.Model
         public int CachedWordID;
         public string CachedWord;
         public List<string> Anagrams;
+        public string Action;
 
         public UserLogFull(string ip, DateTime time, int cachedWord)
         {
             IP_address = ip;
             Time = time;
             CachedWordID = cachedWord;
+        }
+
+        public UserLogFull(string ip, DateTime time, int cachedWord, string action) : this(ip, time, cachedWord)
+        {
+            Action = action;
         }
 
     }

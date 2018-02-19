@@ -12,15 +12,24 @@
         <th> Time </th>
         <th> Word </th>
         <th> Anagrams </th>
+        <th> Action </th>
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td> @item.IP_address </td>
-            <td> @item.Time </td>
-            <td> @item.CachedWord </td>
-            <td> @String.Join(", ", item.Anagrams) </td>
-        </tr>
+    <tr>
+        <td> @item.IP_address </td>
+        <td> @item.Time </td>
+        <td> @item.CachedWord </td>
+        <td> @String.Join(", ", item.Anagrams) </td>
+        <td>
+            @{
+                if (item.Action != null)
+                {
+                    @item.Action
+                }
+            }
+        </td>
+    </tr>
     }
 </table>
 

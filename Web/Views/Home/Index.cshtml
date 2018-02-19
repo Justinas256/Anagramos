@@ -16,21 +16,28 @@
         {
             <li> @Html.ActionLink(@anagram, "Anagram", "Home", new { word = @anagram }, null)</li>
         }
-        
+
     }
 }
 
 @{
-    if (ViewBag.Anagrams != null)
+    if (ViewBag.Permitted == false)
     {
-        <p><h2>Founded anagrams:</h2></p>
-        foreach (string anagram in ViewBag.Anagrams)
-        {
-            <li>@anagram</li>
-        }
+        <p><h3>You don't have a permission! Please update/add words to be able to view anagrams again</h3></p>
     }
     else
     {
-        <h2>No anagrams were founded</h2>
+        if (ViewBag.Anagrams != null)
+        {
+            <p><h2>Founded anagrams:</h2></p>
+            foreach (string anagram in ViewBag.Anagrams)
+            {
+                <li>@anagram</li>
+            }
+        }
+        else
+        {
+            <h2>No anagrams were founded</h2>
+        }
     }
 }

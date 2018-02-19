@@ -11,23 +11,6 @@ namespace Implementation.AnagramSolver.Database
 {
     public class CachedWordsEFCFRepository : ICachedWordsRepository
     {
-        public string FindWordByID(int wordID)
-        {
-            using (var context = new AnagramCFContext())
-            {
-                return  context.Words.Find(wordID)?.Word1;
-            }       
-        }
-
-        public int FindWordID(string word)
-        {
-            using (var context = new AnagramCFContext())
-            {
-                return context.Words
-                    .Where(b => b.Word1 == word)
-                    .FirstOrDefault().ID;
-            }
-        }
 
         public List<int> GetCachedAnagrams(int cachedWordID)
         {

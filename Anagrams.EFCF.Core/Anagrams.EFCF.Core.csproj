@@ -48,6 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\AnagramCFContext.cs" />
+    <Compile Include="Migrations\201802141334271_InitialCreate.cs" />
+    <Compile Include="Migrations\201802141334271_InitialCreate.Designer.cs">
+      <DependentUpon>201802141334271_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802190842067_UserLog.cs" />
+    <Compile Include="Migrations\201802190842067_UserLog.Designer.cs">
+      <DependentUpon>201802190842067_UserLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\CachedWord.cs" />
     <Compile Include="Model\UserLog.cs" />
     <Compile Include="Model\Word.cs" />
@@ -56,6 +65,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802141334271_InitialCreate.resx">
+      <DependentUpon>201802141334271_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802190842067_UserLog.resx">
+      <DependentUpon>201802190842067_UserLog.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -124,51 +124,6 @@ namespace Implementation.AnagramSolver
             return anagramsID;
         }
 
-        public int FindWordID(string word)
-        {
-            int wordID = 0;
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-                var cmd = new SqlCommand();
-                cmd.Connection = connection;
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT * FROM Words Where Word = @Word";
-                cmd.Parameters.Add(new SqlParameter("@Word", word));
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-                        wordID = Int32.Parse(dr["ID"].ToString());
-                    }
-                }
-            }
-            return wordID;
-        }
-
-        public string FindWordByID(int wordID)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                connection.Open();
-                var cmd = new SqlCommand();
-                cmd.Connection = connection;
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT * FROM Words Where ID = @WordID";
-                cmd.Parameters.Add(new SqlParameter("@WordID", wordID));
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-                        return dr["Word"].ToString();
-                    }
-                }
-            }
-            return null;
-        }
-
 
         /*
         public int FindWordID(string word)

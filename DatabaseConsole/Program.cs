@@ -35,7 +35,6 @@ namespace DatabaseConsole
                 Console.WriteLine("Error: " + ex.Message);
             }
 
-            Console.ReadLine();
         }
     }
 }

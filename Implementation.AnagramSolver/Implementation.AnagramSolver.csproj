@@ -108,6 +108,7 @@
     <Compile Include="Repositories\SQL\WordSQLRepository.cs" />
     <Compile Include="Services\UserLogService.cs" />
     <Compile Include="Repositories\File\FileReader.cs" />
+    <Compile Include="Services\WordsService.cs" />
     <Compile Include="Solver\OneWordFinder.cs" />
     <Compile Include="Console\OneWordsConsole.cs" />
     <Compile Include="Solver\PhraseFinder.cs" />

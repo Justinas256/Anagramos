@@ -44,5 +44,30 @@ namespace Implementation.AnagramSolver
         {
             throw new NotImplementedException();
         }
+
+        public void AddNewWord(string word)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateWord(int wordID, string newWord)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteWord(int wordID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string FindWordByID(int wordID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int FindWordID(string word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

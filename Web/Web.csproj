@@ -190,6 +190,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\WebCookies.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -231,6 +232,7 @@
     <Content Include="Views\Home\WordFormSerch.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\UserLogs\Logs.cshtml" />
+    <Content Include="Views\Home\ManageWords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

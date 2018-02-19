@@ -14,6 +14,7 @@ namespace Anagrams.EFCF.Core.Model
         public string IP_address { get; set; }
         public int CachedWordID { get; set; }
         public System.DateTime SearchTime { get; set; }
+        public string Action { get; set; }
 
         public virtual CachedWord CachedWord { get; set; }
     }

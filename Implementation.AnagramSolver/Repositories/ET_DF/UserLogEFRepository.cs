@@ -26,6 +26,11 @@ namespace Implementation.AnagramSolver
             }
         }
 
+        public int CountActionsByIP(string ip_address, string action)
+        {
+            return 0;
+        }
+
         public List<UserLogFull> GetUserLogs()
         {
             using (var context = new AnagramsEntities())

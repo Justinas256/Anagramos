@@ -1,0 +1,73 @@
+﻿<div class="row">
+    <h1>Welcome to Anagram Generator</h1>
+</div>
+
+@{
+    ViewBag.Title = "Manage words word";
+}
+
+<h3>Add word!</h3>
+
+@{ if (ViewBag.Added == false)
+    {
+        <p>Word was not added!</p>
+    }
+    else if (ViewBag.Added == true)
+    {
+        <p>Word was added!</p>
+    }
+}
+
+<form action="AddWord">
+    <div class="form-group">
+        <label>Word:</label>
+        <input class="form-control" id="word" name="word">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+
+<h3>Delete word!</h3>
+
+@{ if (ViewBag.Deleted == false)
+    {
+        <p>Word was not deleted!</p>
+    }
+    else if (ViewBag.Deleted == true)
+    {
+        <p>Word was deleted!</p>
+    }
+}
+
+<form action="DeleteWord">
+    <div class="form-group">
+        <label>Word:</label>
+        <input class="form-control" id="word" name="word">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+
+<h3>Update word!</h3>
+
+@{ if (ViewBag.Updated == false)
+    {
+        <p>Word was not updated!</p>
+    }
+    else if (ViewBag.Updated == true)
+    {
+        <p>Word was updates!</p>
+    }
+}
+
+<form action="UpdateWord">
+    <div class="form-group">
+        <label>Old word:</label>
+        <input class="form-control" id="oldWord" name="oldWord">
+    </div>
+    <div class="form-group">
+        <label>New word:</label>
+        <input class="form-control" id="newWord" name="newWord">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

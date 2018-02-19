@@ -11,5 +11,6 @@ namespace Interfaces.AnagramSolver
     {
         void AddUserLog(UserLogFull userLog);
         List<UserLogFull> GetUserLogs();
+        int CountActionsByIP(string ip_address, string action);
     }
 }

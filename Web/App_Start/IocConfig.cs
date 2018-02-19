@@ -3,6 +3,7 @@ using Autofac.Core;
 using Autofac.Integration.Mvc;
 using Implementation.AnagramSolver;
 using Implementation.AnagramSolver.Database;
+using Implementation.AnagramSolver.Services;
 using Interfaces.AnagramSolver;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,11 @@ namespace Web.App_Start
 
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
-            builder = SetSQL(builder);
+            builder = SetEFCF(builder);
 
             builder.RegisterType<CachedWordsService>().As<CachedWordsService>();
             builder.RegisterType<UserLogService>().As<UserLogService>();
+            builder.RegisterType<WordsService>().As<WordsService>();
 
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
