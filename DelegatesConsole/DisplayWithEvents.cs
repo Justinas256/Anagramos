@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DelegatesConsole
 {
-    public class Display : IDisplay
+    public class DisplayWithEvents : IDisplay
     {
-
         public Action<string> PrintText { private set; get; }
         public Func<string, string> FormatText { private set; get; }
 
-        public Display(Action<string> printAction)
+        public DisplayWithEvents(Action<string> printAction)
         {
             PrintText = printAction;
+            Program.OnPrintText += PrintText;
         }
 
         public void Print(string input)
@@ -27,29 +27,5 @@ namespace DelegatesConsole
             input = FormatText(input);
             PrintText(input);
         }
-
-        /*
-
-        private PrintText _printText;
-        private FormatText _formatText;
-
-        
-        public Display(PrintText printDelegate)
-        {
-            _printText = new PrintText(printDelegate);
-        }
-
-        public void Print(string input)
-        {
-            _printText(input);
-        }
-        public void FormattedPrint(FormatText del, string input)
-        {
-            _formatText = new FormatText(del);
-            input = _formatText(input);
-            _printText(input);
-        }
-        */
-
     }
 }

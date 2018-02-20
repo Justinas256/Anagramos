@@ -9,13 +9,32 @@ namespace DelegatesConsole
 {
     class Program
     {
+        public static event Action<string> OnPrintText;
+
         static void Main(string[] args)
         {
-            PrintText printDel = new PrintText(PrintToConsole);
-            FormatText formatDel = new FormatText(FirstLetterUppercase);
+            /*
+            -------DELEGATES------------
+            PrintText printText = new PrintText(PrintToConsole);
+            FormatText formatText = new FormatText(FirstLetterUppercase);
+            */
 
-            IDisplay display = new Display(printDel);
-            display.FormattedPrint(formatDel, "hello");
+            /*
+            -------FUNC--ACTION------------
+            Action<string> printText = PrintToConsole;
+            Func<string, string> formatText = FirstLetterUppercase;
+
+            --Display text--
+            IDisplay display = new Display(printText);
+            display.FormattedPrint(formatText, "hello");
+             */
+
+            //---EVENTS--
+            IDisplay displayEvents1 = new DisplayWithEvents(PrintToDebug);
+            IDisplay displayEvents2 = new DisplayWithEvents(PrintToConsole);
+            //PrintInput += displayEvents1.PrintText + displayEvents2.PrintText;
+            OnPrintText("Hi!!!!");
+
         }
 
         public static void PrintToConsole(string input)
