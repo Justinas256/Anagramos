@@ -84,7 +84,7 @@ namespace Implementation.AnagramSolver
             if (anagrams == null)
             {
                 anagrams = Solver?.FindWords(new List<String>() { word });
-                InsertCashedWords(word, anagrams);
+                //InsertCashedWords(word, anagrams);
             }
             return anagrams;
         }

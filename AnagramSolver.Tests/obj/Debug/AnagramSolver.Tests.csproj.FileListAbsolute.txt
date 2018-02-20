@@ -71,3 +71,7 @@ C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Deb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Autofac.Integration.Mvc.dll
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Autofac.xml
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Autofac.Integration.Mvc.xml
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Castle.Core.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\NSubstitute.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\System.Threading.Tasks.Extensions.xml
