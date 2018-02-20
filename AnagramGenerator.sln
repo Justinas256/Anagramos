@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anagrams.EFCF.Core", "Anagr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anagrams.EF.Core", "Anagrams.EF.Core\Anagrams.EF.Core.csproj", "{B1C66327-E39E-492E-B1DE-B85F40A3ADC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{46407B7A-AE4F-42F0-922C-B3ED6FEBCB7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{B1C66327-E39E-492E-B1DE-B85F40A3ADC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1C66327-E39E-492E-B1DE-B85F40A3ADC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1C66327-E39E-492E-B1DE-B85F40A3ADC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46407B7A-AE4F-42F0-922C-B3ED6FEBCB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46407B7A-AE4F-42F0-922C-B3ED6FEBCB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46407B7A-AE4F-42F0-922C-B3ED6FEBCB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46407B7A-AE4F-42F0-922C-B3ED6FEBCB7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

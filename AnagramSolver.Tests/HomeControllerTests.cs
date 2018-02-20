@@ -12,6 +12,7 @@ namespace AnagramSolver.Tests.Controllers
     [TestFixture]
     class HomeControllerTests
     {
+        /*
         [Test]
         public void Anagram_GetView_IndexView()
         {
@@ -27,6 +28,7 @@ namespace AnagramSolver.Tests.Controllers
             var result = controller.Index() as ViewResult;
             Assert.AreEqual("", result.ViewName);
         }
+        */
 
     }
 

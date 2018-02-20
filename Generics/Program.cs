@@ -12,70 +12,15 @@ namespace Generics
     {
         static void Main(string[] args)
         {
+            EnumMapping EnumMap = new EnumMapping();
+
+            int week = (int)EnumMap.MapValueToEnum<EnumMapping.Weekday, string>("Friday");
+            Console.WriteLine(EnumMap.MapValueToEnum<EnumMapping.Weekday, string>("Friday"));
+            Console.WriteLine(week);
+            Console.WriteLine(EnumMap.MapValueToEnum<EnumMapping.Gender, string>("Male"));
+            Console.WriteLine(EnumMap.MapValueToEnum<EnumMapping.Gender, int>(2));
+            Console.ReadLine();
         }
-
-        public enum Gender : int
-        {
-            Male = 1,
-            Female = 2
-        }
-
-        public enum Weekday
-        {
-            Monday,
-            Tuesday,
-            Wednesday,
-            Thursday,
-            Friday,
-            Saturday,
-            Sunday
-        }
-
-        public static Gender MapIntToGender(int value)
-        {
-            Gender result;
-            if (!Enum.TryParse(value.ToString(), out result))
-            {
-                throw new Exception($"Value '{value}' is not part of Gender enum");
-            }
-
-            return result;
-        }
-
-        public static Gender MapStringToGender(string value)
-        {
-            Gender result;
-            if (!Enum.TryParse(value, out result))
-            {
-                throw new Exception($"Value '{value}' is not part of Gender enum");
-            }
-
-            return result;
-        }
-
-        public static Weekday MapStringToWeekday(string value)
-        {
-            Weekday result;
-            if (!Enum.TryParse(value, out result))
-            {
-                throw new Exception($"Value '{value}' is not part of Weekday enum");
-            }
-
-            return result;
-        }
-
-        /*
-        public static T MapValueToEnum<T>(string value) where T: struct, IConvertible, IComparable, IFormattable
-        {
-            
-            if (!Enum.TryParse(value, out T result))
-            {
-                throw new Exception($"Value '{value}' is not part of enum");
-            }
-
-            return result;
-        }
-        */
 
     }
 }

@@ -67,3 +67,7 @@ C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Deb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EFCF.Core.dll.config
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EF.Core.pdb
 C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Anagrams.EF.Core.dll.config
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Autofac.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Autofac.Integration.Mvc.dll
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Autofac.xml
+C:\Users\justinas.antanaviciu\source\repos\Anagramos\AnagramSolver.Tests\bin\Debug\Autofac.Integration.Mvc.xml
