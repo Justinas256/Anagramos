@@ -1,5 +1,6 @@
-﻿using Implementation.AnagramSolver;
-using Interfaces.AnagramSolver;
+﻿using Anagram.Business;
+using Anagram.Core;
+using Anagrams.Files;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

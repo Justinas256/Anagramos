@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\AnagramCFContext.cs" />
+    <Compile Include="Repositories\CachedWordsEFCFRepository.cs" />
+    <Compile Include="Repositories\UserLogEFCFRepository.cs" />
+    <Compile Include="Repositories\WordsEFCFRepository.cs" />
     <Compile Include="Migrations\201802141334271_InitialCreate.cs" />
     <Compile Include="Migrations\201802141334271_InitialCreate.Designer.cs">
       <DependentUpon>201802141334271_InitialCreate.cs</DependentUpon>
@@ -73,6 +76,12 @@
     <EmbeddedResource Include="Migrations\201802190842067_UserLog.resx">
       <DependentUpon>201802190842067_UserLog.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces.AnagramSolver\Anagram.Core.csproj">
+      <Project>{b6def0ce-43e9-4a1d-87cd-a7aa47876696}</Project>
+      <Name>Anagram.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

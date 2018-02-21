@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Implementation.AnagramSolver.Model
+namespace Anagram.Core.Model
 {
     public class UserLogFull
     {

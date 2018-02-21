@@ -103,6 +103,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnagramsApiControllerTests.cs" />
+    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Controllers\UserLogsControllerTests.cs" />
     <Compile Include="HomeControllerTests.cs" />
     <Compile Include="FileReaderTests.cs" />
     <Compile Include="OneWordFinderTests.cs" />
@@ -116,13 +118,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Implementation.AnagramSolver\Implementation.AnagramSolver.csproj">
-      <Project>{cf9fb0d8-e7d8-470a-991d-82360ed558cf}</Project>
-      <Name>Implementation.AnagramSolver</Name>
+    <ProjectReference Include="..\Anagram.Services\Anagram.Business.csproj">
+      <Project>{34a28307-3861-446b-a678-ea8efbf60fb3}</Project>
+      <Name>Anagram.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Interfaces.AnagramSolver\Interfaces.AnagramSolver.csproj">
+    <ProjectReference Include="..\Anagrams.File\Anagrams.Files.csproj">
+      <Project>{8c6a7c75-b918-42ca-a60c-024304d3d548}</Project>
+      <Name>Anagrams.Files</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interfaces.AnagramSolver\Anagram.Core.csproj">
       <Project>{b6def0ce-43e9-4a1d-87cd-a7aa47876696}</Project>
-      <Name>Interfaces.AnagramSolver</Name>
+      <Name>Anagram.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\MainApp\MainApp.csproj">
       <Project>{fad86077-4f39-4015-9563-01afcc603be1}</Project>

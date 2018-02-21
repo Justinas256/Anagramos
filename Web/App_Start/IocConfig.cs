@@ -1,10 +1,11 @@
-﻿using Autofac;
+﻿using Anagram.Business;
+using Anagram.Core;
+using Anagram.SQL;
+using Anagrams.EF.Core;
+using Anagrams.EFCF.Core;
+using Autofac;
 using Autofac.Core;
 using Autofac.Integration.Mvc;
-using Implementation.AnagramSolver;
-using Implementation.AnagramSolver.Database;
-using Implementation.AnagramSolver.Services;
-using Interfaces.AnagramSolver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,9 @@ namespace Web.App_Start
 
             builder = SetEFCF(builder);
 
-            builder.RegisterType<CachedWordsService>().As<CachedWordsService>();
-            builder.RegisterType<UserLogService>().As<UserLogService>();
-            builder.RegisterType<WordsService>().As<WordsService>();
+            builder.RegisterType<CachedWordsService>().As<ICachedWordsService>();
+            builder.RegisterType<UserLogService>().As<IUserLogService>();
+            builder.RegisterType<WordsService>().As<IWordsService>();
 
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

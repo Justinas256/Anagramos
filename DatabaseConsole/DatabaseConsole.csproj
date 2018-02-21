@@ -70,13 +70,13 @@
       <Project>{760f1e5a-908f-410e-84a4-d8ea3323034a}</Project>
       <Name>Anagrams.EFCF.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Implementation.AnagramSolver\Implementation.AnagramSolver.csproj">
-      <Project>{cf9fb0d8-e7d8-470a-991d-82360ed558cf}</Project>
-      <Name>Implementation.AnagramSolver</Name>
+    <ProjectReference Include="..\Anagrams.File\Anagrams.Files.csproj">
+      <Project>{8c6a7c75-b918-42ca-a60c-024304d3d548}</Project>
+      <Name>Anagrams.Files</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Interfaces.AnagramSolver\Interfaces.AnagramSolver.csproj">
+    <ProjectReference Include="..\Interfaces.AnagramSolver\Anagram.Core.csproj">
       <Project>{b6def0ce-43e9-4a1d-87cd-a7aa47876696}</Project>
-      <Name>Interfaces.AnagramSolver</Name>
+      <Name>Anagram.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

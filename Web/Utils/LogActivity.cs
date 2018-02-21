@@ -1,4 +1,4 @@
-﻿using Implementation.AnagramSolver.Database;
+﻿using Anagram.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +10,9 @@ namespace Web.Utils
     public class LogActivity
     {
 
-        UserLogService UsersLogService;
+        IUserLogService UsersLogService;
 
-        public LogActivity(UserLogService usersLogService)
+        public LogActivity(IUserLogService usersLogService)
         {
             UsersLogService = usersLogService;
         }

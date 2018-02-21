@@ -65,6 +65,9 @@
     <Compile Include="CachedWord.cs">
       <DependentUpon>AnagramEF.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\CachedWordsEFRepository.cs" />
+    <Compile Include="Repositories\UserLogEFRepository.cs" />
+    <Compile Include="Repositories\WordsEFRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserLog.cs">
       <DependentUpon>AnagramEF.tt</DependentUpon>
@@ -97,6 +100,12 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces.AnagramSolver\Anagram.Core.csproj">
+      <Project>{b6def0ce-43e9-4a1d-87cd-a7aa47876696}</Project>
+      <Name>Anagram.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,8 +1,4 @@
-﻿using Implementation.AnagramSolver;
-using Implementation.AnagramSolver.Database;
-using Implementation.AnagramSolver.Model;
-using Interfaces.AnagramSolver;
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
 using System;
 using Shouldly;
@@ -10,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Anagram.Core;
+using Anagram.Business;
+using Anagram.Core.Model;
 
 namespace AnagramSolver.Tests.Services
 {

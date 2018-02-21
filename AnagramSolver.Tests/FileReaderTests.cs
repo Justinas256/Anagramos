@@ -1,4 +1,4 @@
-﻿using Implementation.AnagramSolver;
+﻿using Anagrams.Files;
 using NUnit.Framework;
 using System;
 using System.Collections;

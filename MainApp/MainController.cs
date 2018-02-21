@@ -1,4 +1,4 @@
-﻿using Interfaces.AnagramSolver;
+﻿using Anagram.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;

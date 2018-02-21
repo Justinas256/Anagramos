@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Anagram.Core;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +11,7 @@ namespace DatabaseConsole
 {
     class DatabaseSQL : IDatabase
     {
-        String _connectionString = "Data Source=LT-LIT-SC-0428;Initial Catalog=AnagramsCF;Integrated Security=sspi;";
+        String _connectionString = AppConfig.ConnectionString;
 
         public void AddWordsToDatabase(List<string> words)
         {

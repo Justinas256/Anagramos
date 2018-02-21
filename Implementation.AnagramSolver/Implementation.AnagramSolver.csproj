@@ -98,23 +98,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependencies.cs" />
-    <Compile Include="Repositories\ET_CF\CachedWordsEFCFRepository.cs" />
-    <Compile Include="Repositories\ET_CF\UserLogEFCFRepository.cs" />
-    <Compile Include="Repositories\ET_CF\WordsEFCFRepository.cs" />
-    <Compile Include="Repositories\ET_DF\CachedWordsEFRepository.cs" />
-    <Compile Include="Repositories\SQL\CachedWordsSQLRepository.cs" />
-    <Compile Include="Services\CachedWordsService.cs" />
-    <Compile Include="Repositories\ET_DF\WordsEFRepository.cs" />
-    <Compile Include="Repositories\SQL\WordSQLRepository.cs" />
-    <Compile Include="Services\UserLogService.cs" />
     <Compile Include="Repositories\File\FileReader.cs" />
-    <Compile Include="Services\WordsService.cs" />
-    <Compile Include="Solver\OneWordFinder.cs" />
-    <Compile Include="Console\OneWordsConsole.cs" />
-    <Compile Include="Solver\PhraseFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\SQL\UserLogSQLRepository.cs" />
-    <Compile Include="Repositories\ET_DF\UserLogEFRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Anagrams.EF.Core\Anagrams.EF.Core.csproj">
@@ -136,6 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Console\" />
+    <Folder Include="Services\" />
+    <Folder Include="Solver\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

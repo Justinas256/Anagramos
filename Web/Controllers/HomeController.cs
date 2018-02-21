@@ -1,14 +1,11 @@
-﻿using Implementation.AnagramSolver;
-using Interfaces.AnagramSolver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using PagedList;
 using System.Linq;
-using Implementation.AnagramSolver.Database;
 using System.Net;
-using Implementation.AnagramSolver.Services;
 using Web.Utils;
+using Anagram.Core;
 
 namespace Web.Controllers
 {
@@ -16,28 +13,18 @@ namespace Web.Controllers
     {
         
         IAnagramSolver Solver;
-        WordsService WordsService;
-        CachedWordsService CachedWordService;
-        UserLogService UsersLogService;
+        IWordsService WordsService;
+        ICachedWordsService CachedWordService;
+        IUserLogService UsersLogService;
         LogActivity LogActivities;
 
-        /*
-        public HomeController()
-        {
-            Solver = Dependencies.Solver;
-            Reader = Dependencies.WordRepository;
-            CachedWordService = Dependencies.CachedWordService;
-            UsersLogService = Dependencies.UsersLogService;
-        }
-        */
-
-        public HomeController(IAnagramSolver solver, WordsService wordsService, CachedWordsService cachedWordService, UserLogService usersLogService)
+        public HomeController(IAnagramSolver solver, IWordsService wordsService, ICachedWordsService cachedWordService, IUserLogService usersLogService)
         {
             Solver = solver;
             WordsService = wordsService;
             CachedWordService = cachedWordService;
             UsersLogService = usersLogService;
-            LogActivities = new LogActivity(UsersLogService);
+            LogActivities = new LogActivity(usersLogService);
         }
 
         public ActionResult Index()

@@ -1,5 +1,5 @@
-﻿using Implementation.AnagramSolver;
-using Interfaces.AnagramSolver;
+﻿using Anagram.Core;
+using Anagrams.Files;
 using System;
 using System.Collections.Generic;
 using System.Linq;

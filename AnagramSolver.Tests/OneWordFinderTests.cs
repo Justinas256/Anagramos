@@ -1,5 +1,5 @@
-﻿using Implementation.AnagramSolver;
-using Interfaces.AnagramSolver;
+﻿using Anagram.Business;
+using Anagram.Core;
 using NUnit.Framework;
 using Shouldly;
 using System;

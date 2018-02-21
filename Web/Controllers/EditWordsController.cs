@@ -1,6 +1,5 @@
-﻿using Implementation.AnagramSolver;
-using Implementation.AnagramSolver.Database;
-using Implementation.AnagramSolver.Services;
+﻿using Anagram.Business;
+using Anagram.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +12,10 @@ namespace Web.Controllers
     public class EditWordsController : Controller
     {
 
-        WordsService WordsService;
+        IWordsService WordsService;
         LogActivity LogActivities;
 
-        public EditWordsController(WordsService wordsService, UserLogService usersLogService)
+        public EditWordsController(IWordsService wordsService, IUserLogService usersLogService)
         {
             WordsService = wordsService;
             LogActivities = new LogActivity(usersLogService);

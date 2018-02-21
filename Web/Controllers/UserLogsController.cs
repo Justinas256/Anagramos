@@ -1,20 +1,19 @@
-﻿using Implementation.AnagramSolver;
-using Implementation.AnagramSolver.Database;
-using Implementation.AnagramSolver.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Anagram.Core;
+using Anagram.Core.Model;
 
 namespace Web.Controllers
 {
     public class UserLogsController : Controller
     {
-        UserLogService UsersLogService;
+        IUserLogService UsersLogService;
 
-        public UserLogsController(UserLogService usersLogService)
+        public UserLogsController(IUserLogService usersLogService)
         { 
             UsersLogService = usersLogService;
         }
