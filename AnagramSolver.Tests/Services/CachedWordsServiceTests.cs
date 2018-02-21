@@ -52,17 +52,17 @@ namespace AnagramSolver.Tests.Services
             result.ShouldBe(new List<string> { "alus", "sula" });
         }
 
-        /*
+        
         [Test]
         public void FindAnagrams_NoCachedAnagrams_ShouldFindAllAnagrams()
         {
-            _anagramSolver.FindWords(new List<String>() { "sula" }).Returns(new List<string>() { "alus" });
-            _cachedWordsRepository.GetCachedWordID("sula").Returns(-1);
+            _anagramSolver.FindWords(Arg.Any<List<string>>()).Returns(new List<string>() { "alus" });
+            _cachedWordsRepository.GetCachedWordID(Arg.Any<string>()).ReturnsForAnyArgs(x => null);
 
             var result = _cachedWordsService.FindAnagrams("sula");
             result.ShouldBe(new List<string> { "alus"});
         }
-        */
+        
 
 
 

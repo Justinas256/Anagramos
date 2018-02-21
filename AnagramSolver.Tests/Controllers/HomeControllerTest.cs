@@ -17,18 +17,18 @@ namespace AnagramSolver.Tests.Controllers
     class HomeControllerTest
     {
         private HomeController _homeController;
-        private WordsService _wordsService;
-        private CachedWordsService _cachedWordsService;
-        private UserLogService _userLogService;
+        private IWordsService _wordsService;
+        private ICachedWordsService _cachedWordsService;
+        private IUserLogService _userLogService;
         private IAnagramSolver _anagramSolver;
 
         [SetUp]
         public void Setup()
         {
-            _wordsService = Substitute.For<WordsService>(null, null);
-            _cachedWordsService = Substitute.For<CachedWordsService>(null, null, null);
+            _wordsService = Substitute.For<IWordsService>();
+            _cachedWordsService = Substitute.For<ICachedWordsService>();
             _anagramSolver = Substitute.For<IAnagramSolver>();
-            _userLogService = Substitute.For<UserLogService>(null, null);
+            _userLogService = Substitute.For<IUserLogService>();
             _homeController = new HomeController(_anagramSolver, _wordsService, _cachedWordsService, _userLogService);
         }
 
@@ -37,8 +37,42 @@ namespace AnagramSolver.Tests.Controllers
         {
             _wordsService.GetFilteredWords("nam").Returns(new List<string> { "namas", "namas2" });
             ViewResult result = (ViewResult)_homeController.FindWord("nam");
-            result.Model.ShouldBe(new List<string> { "namas", "namas2" });
-            
+            result.ViewData.Values.ShouldBe(new List<List<string>> { new List<string> { "namas", "namas2" } });
         }
+
+        [Test]
+        public void Anagram_IsPermitted_GetCorrectAnagrams()
+        {
+            _userLogService.IsPermittedToView(Arg.Any<string>()).Returns(true);
+            _cachedWordsService.FindAnagrams("alus").Returns(new List<string> { "sula", "alus" });
+
+            ViewResult result = (ViewResult)_homeController.Anagram("alus");
+            result.ViewData.Values.ShouldBe(new List<List<string>> { new List<string> { "sula", "alus" } });
+        }
+
+        [Test]
+        public void Anagram_INotPermitted_RetuenNotPermitted()
+        {
+            _userLogService.IsPermittedToView(Arg.Any<string>()).Returns(false);
+            //_cachedWordsService.FindAnagrams("alus").Returns(new List<string> { "sula", "alus" });
+
+            ViewResult result = (ViewResult)_homeController.Anagram("alus");
+            result.ViewData.Values.ShouldBe(new List<object> { false });
+        }
+
+        [Test]
+        public void Anagram_GetView_IndexView()
+        {
+            var result = _homeController.Anagram("alus") as ViewResult;
+            Assert.AreEqual("Index", result.ViewName);
+        }
+
+        [Test]
+        public void Index_GetView_IndexView()
+        {
+            var result = _homeController.Index() as ViewResult;
+            Assert.AreEqual("", result.ViewName);
+        }
+
     }
 }

@@ -104,8 +104,6 @@
   <ItemGroup>
     <Compile Include="AnagramsApiControllerTests.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="Controllers\UserLogsControllerTests.cs" />
-    <Compile Include="HomeControllerTests.cs" />
     <Compile Include="FileReaderTests.cs" />
     <Compile Include="OneWordFinderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -52,7 +52,7 @@ namespace Anagram.Business
 
         public List<string> FindCachedAnagramsString (string word)
         {
-            List<int> cachedAnagrams = this.FindCachedAnagrams(word);
+            List<int> cachedAnagrams = FindCachedAnagrams(word);
             if (cachedAnagrams != null)
             {
                 List<string> anagramsString = new List<string>();

@@ -56,7 +56,7 @@ namespace Web.Controllers
 
         public ActionResult FindWord(String word)
         {
-            ViewBag.Words = WordsService?.GetFilteredWords(word);
+            ViewBag.Words = WordsService.GetFilteredWords(word);
             return View("Search");
         }
 
@@ -78,7 +78,7 @@ namespace Web.Controllers
         //download all anagrams in .txt file
         public FileResult DownloadAnagrams()
         {
-            byte[] fileBytes = System.IO.File.ReadAllBytes(@"C:\Users\justinas.antanaviciu\source\repos\Anagramos\Anagramos\zodynas.txt");
+            byte[] fileBytes = System.IO.File.ReadAllBytes(AppConfig.FilePath);
             string fileName = "anagrams.txt";
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }

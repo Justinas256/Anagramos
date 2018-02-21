@@ -15,13 +15,15 @@ namespace AnagramSolver.Tests.Services
     class WordsServiceTests
     {
         private IWordRepository _wordRepository;
+        private ICachedWordsRepository _cachedWordsRepository;
         private WordsService _wordsService;
 
         [SetUp]
         public void Setup()
         {
+            _cachedWordsRepository = Substitute.For<ICachedWordsRepository>();
             _wordRepository = Substitute.For<IWordRepository>();
-            _wordsService = new WordsService(_wordRepository, null);
+            _wordsService = new WordsService(_wordRepository, _cachedWordsRepository);
         }
 
         [Test]

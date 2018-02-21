@@ -16,15 +16,15 @@ namespace AnagramSolver.Tests.Services
     class UserLogServiceTests
     {
         private IUserLogRepository _userLogRepository;
-        //private CachedWordsService _cachedWordsService;
+        private ICachedWordsService _cachedWordsService;
         private UserLogService _userLogService;
 
         [SetUp]
         public void Setup()
         {
             _userLogRepository = Substitute.For<IUserLogRepository>();
-            //_cachedWordsService = Substitute.For<CachedWordsService>();
-            _userLogService = new UserLogService(_userLogRepository, null);
+            _cachedWordsService = Substitute.For<ICachedWordsService>();
+            _userLogService = new UserLogService(_userLogRepository, _cachedWordsService);
         }
 
         [Test]
@@ -78,6 +78,14 @@ namespace AnagramSolver.Tests.Services
             _userLogRepository.CountActionsByIP("0", "Add").Returns(10);
 
             _userLogService.IsPermittedToView("0").ShouldBe(true);
+        }
+
+        [Test]
+        public void AddNewLogView_AddedToDatabase()
+        {
+            _cachedWordsService.GetCachedWordID(Arg.Any<string>()).Returns(1);
+            _userLogService.AddNewLogView("1", new DateTime(), "la");
+            _userLogRepository.Received().AddUserLog(Arg.Any<UserLogFull>());
         }
 
     }
