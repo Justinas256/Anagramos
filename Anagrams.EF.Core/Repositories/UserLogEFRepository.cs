@@ -25,7 +25,7 @@ namespace Anagrams.EF.Core
                 context.SaveChanges();
             }
         }
-
+        
         public int CountActionsByIP(string ip_address, string action)
         {
             return 0;
