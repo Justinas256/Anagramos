@@ -30,9 +30,9 @@ namespace DelegatesConsole
              */
 
             //---EVENTS--
-            DisplayWithEvents.TextPrinted += PrintToDebug;
-            DisplayWithEvents.TextPrinted += PrintToConsole;
-            IDisplay displayEvents = new DisplayWithEvents();
+            DisplayWithEvents displayEvents = new DisplayWithEvents();
+            displayEvents.TextPrinted += PrintToDebug;
+            displayEvents.TextPrinted += PrintToConsole;
             displayEvents.Print("Hi");
 
         }

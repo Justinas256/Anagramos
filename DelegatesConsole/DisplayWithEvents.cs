@@ -8,7 +8,7 @@ namespace DelegatesConsole
 {
     public class DisplayWithEvents : IDisplay
     {
-        public static event Action<string> TextPrinted;
+        public event Action<string> TextPrinted;
 
         public Action<string> PrintText { private set; get; } //not used
         public Func<string, string> FormatText { private set; get; }
@@ -18,7 +18,7 @@ namespace DelegatesConsole
             OnTextPrinted(input);
         }
 
-        protected virtual void OnTextPrinted(string input)
+       private void OnTextPrinted(string input)
         {
             TextPrinted?.Invoke(input);
         }

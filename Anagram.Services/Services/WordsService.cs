@@ -30,25 +30,13 @@ namespace Anagram.Business
 
         public void AddNewWord(string word)
         {
-            if(word != null && word.Length > 1)
-            {
-                WordsRepository.AddNewWord(word);
-            } else
-            {
-                throw new Exception("Invalid wrong");
-            }
+            WordsRepository.AddNewWord(word);
             
         }
 
         public void DeleteWord(int wordID)
         {
-            try
-            {
-                WordsRepository.DeleteWord(wordID);
-            } catch(Exception ex)
-            {
-                throw ex;
-            }
+            WordsRepository.DeleteWord(wordID);
         }
 
         public void DeleteWord(string word)
@@ -58,15 +46,8 @@ namespace Anagram.Business
                 throw new Exception("Invalid word!");
             }
 
-            try
-            {
-                int wordID = WordsRepository.FindWordID(word);
-                WordsRepository.DeleteWord(wordID);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            int wordID = WordsRepository.FindWordID(word);
+            WordsRepository.DeleteWord(wordID);
         }
 
         public void UpdateWord(int wordID, string newWord)
@@ -76,14 +57,8 @@ namespace Anagram.Business
                 throw new Exception("Invalid wrong");
             }
 
-            try
-            {
-                WordsRepository.UpdateWord(wordID, newWord);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            WordsRepository.UpdateWord(wordID, newWord);
+
         }
 
         public void UpdateWord(string oldWord, string newWord)
@@ -93,15 +68,8 @@ namespace Anagram.Business
                 throw new Exception("Invalid word!");
             }
 
-            try
-            {
-                int wordID = WordsRepository.FindWordID(oldWord);
-                UpdateWord(wordID, newWord);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            int wordID = WordsRepository.FindWordID(oldWord);
+            UpdateWord(wordID, newWord);
         }
     }
 }

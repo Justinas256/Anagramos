@@ -11,9 +11,6 @@ namespace DelegatesConsole
 
     public interface IDisplay
     {
-        Action<string> PrintText { get; }
-        Func<string, string> FormatText { get; }
-
         void Print(string input);
         //void FormattedPrint(FormatText del, string input);
         void FormattedPrint(Func<string,string> del, string input);
