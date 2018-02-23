@@ -33,10 +33,10 @@ namespace AnagramSolver.Tests.Controllers
         }
 
         [Test]
-        public void FindWord_GetCorrectWords()
+        public async Task FindWord_GetCorrectWords()
         {
             _wordsService.GetFilteredWords("nam").Returns(new List<string> { "namas", "namas2" });
-            ViewResult result = (ViewResult)_homeController.FindWord("nam");
+            ViewResult result = await _homeController.FindWord("nam");
             result.ViewData.Values.ShouldBe(new List<List<string>> { new List<string> { "namas", "namas2" } });
         }
 

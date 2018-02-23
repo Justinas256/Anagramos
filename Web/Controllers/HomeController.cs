@@ -56,9 +56,9 @@ namespace Web.Controllers
             return View("Index");
         }
 
-        public ActionResult FindWord(String word)
+        public async Task<ViewResult> FindWord(String word)
         {
-            ViewBag.Words = WordsService.GetFilteredWords(word);
+            ViewBag.Words = await Task.Run(() => WordsService.GetFilteredWords(word));
             return View("Search");
         }
 
@@ -78,9 +78,9 @@ namespace Web.Controllers
         }
 
         //download all anagrams in .txt file
-        public FileResult DownloadAnagrams()
+        public async Task<FileResult> DownloadAnagrams()
         {
-            byte[] fileBytes = System.IO.File.ReadAllBytes(AppConfig.FilePath);
+            byte[] fileBytes = await Task.Run(() => System.IO.File.ReadAllBytes(AppConfig.FilePath));
             string fileName = "anagrams.txt";
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }

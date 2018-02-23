@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using PagedList;
 using Anagram.Core;
 using Anagram.Core.Model;
+using System.Threading.Tasks;
 
 namespace Web.Controllers
 {
@@ -18,9 +19,9 @@ namespace Web.Controllers
             UsersLogService = usersLogService;
         }
 
-        public ViewResult Logs(int? page)
+        public async Task<ViewResult> Logs(int? page)
         {
-            List<UserLogFull> userLogs = UsersLogService.GetAllLogsAndAnagrams();
+            List<UserLogFull> userLogs = await Task.Run(() => UsersLogService.GetAllLogsAndAnagrams());
             int pageSize = 100;
             int pageNumber = (page ?? 1);
             return View(userLogs.ToPagedList(pageNumber, pageSize));
