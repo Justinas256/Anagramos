@@ -11,5 +11,6 @@ namespace Anagram.Core
     {
         List<string> AllWords { get; }
         List<string> FindWords(List<String> toFind);
+        Task<List<string>> FindWordsAsync(List<String> toFind);
     }
 }

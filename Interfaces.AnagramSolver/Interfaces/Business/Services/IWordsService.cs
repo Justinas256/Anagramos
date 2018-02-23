@@ -15,5 +15,6 @@ namespace Anagram.Core
         void DeleteWord(string word);
         void UpdateWord(int wordID, string newWord);
         void UpdateWord(string oldWord, string newWord);
+        Task<List<string>> GetDataAsync();
     }
 }

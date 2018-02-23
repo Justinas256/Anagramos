@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FilesManager
@@ -40,8 +42,26 @@ namespace FilesManager
             catch
             {
                 throw new Exception("Files were not copied!");
-            }
-            
+            }  
         }
+
+        public void CopyFilesParallel(string sourcePath, string targetPath)
+        {
+            if (System.IO.Directory.Exists(sourcePath))
+            {
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+
+                string[] files = System.IO.Directory.GetFiles(sourcePath, "*.*");
+
+                Parallel.ForEach(files, newPath =>
+                {
+                    File.Copy(newPath, newPath.Replace(sourcePath, targetPath));
+                });
+            }
+        }
+
     }
 }

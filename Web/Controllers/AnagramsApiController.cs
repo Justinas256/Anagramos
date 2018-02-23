@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Web.Controllers
@@ -19,9 +20,10 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetAnagram(String word)
+        public async Task<IHttpActionResult> GetAnagram(String word)
         {
-            List<String> foundedAnagrams = Solver?.FindWords(new List<String>() { word });
+            List<String> foundedAnagrams = await Solver.FindWordsAsync(new List<String>() { word });
+
             if (foundedAnagrams == null || !foundedAnagrams.Any())
                 return Ok("No anagrams were founded");
             else

@@ -123,6 +123,10 @@ namespace Anagram.Business
             return String.Concat(word.OrderBy(c => c));
         }
 
+        public Task<List<string>> FindWordsAsync(List<string> toFind)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

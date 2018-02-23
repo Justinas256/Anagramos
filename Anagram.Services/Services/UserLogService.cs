@@ -59,32 +59,38 @@ namespace Anagram.Business
         public void AddNewLogDeleted(string ip, DateTime time, string cachedWord)
         {
             int? cachedWordID = cachedWordsService.GetCachedWordID(cachedWord);
-            if (cachedWordID != null)
+            if (cachedWordID == null)
             {
-                UserLogFull userLog = new UserLogFull(ip, time, cachedWordID.Value, "Delete");
-                Repository.AddUserLog(userLog);
+                cachedWordsService.FindAnagrams(cachedWord);
+                cachedWordID = cachedWordsService.GetCachedWordID(cachedWord);
             }
+            UserLogFull userLog = new UserLogFull(ip, time, cachedWordID.Value, "Delete");
+            Repository.AddUserLog(userLog);
             
         }
 
         public void AddNewLogUpdated(string ip, DateTime time, string cachedWord)
         {
             int? cachedWordID = cachedWordsService.GetCachedWordID(cachedWord);
-            if (cachedWordID != null)
+            if (cachedWordID == null)
             {
-                UserLogFull userLog = new UserLogFull(ip, time, cachedWordID.Value, "Update");
-                Repository.AddUserLog(userLog);
+                cachedWordsService.FindAnagrams(cachedWord);
+                cachedWordID = cachedWordsService.GetCachedWordID(cachedWord);
             }
+            UserLogFull userLog = new UserLogFull(ip, time, cachedWordID.Value, "Update");
+            Repository.AddUserLog(userLog);
         }
 
         public void AddNewLogAdded(string ip, DateTime time, string cachedWord)
         {
             int? cachedWordID = cachedWordsService.GetCachedWordID(cachedWord);
-            if (cachedWordID != null)
+            if(cachedWordID == null)
             {
-                UserLogFull userLog = new UserLogFull(ip, time, cachedWordID.Value, "Add");
-                Repository.AddUserLog(userLog);
+                cachedWordsService.FindAnagrams(cachedWord);
+                cachedWordID = cachedWordsService.GetCachedWordID(cachedWord);
             }
+            UserLogFull userLog = new UserLogFull(ip, time, cachedWordID.Value, "Add");
+            Repository.AddUserLog(userLog);
         }
 
         public bool IsPermittedToView(string ip)

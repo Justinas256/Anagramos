@@ -3,6 +3,7 @@ using Anagram.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Web.Utils;
@@ -36,7 +37,7 @@ namespace Web.Controllers
                 {
                     WordsService.AddNewWord(word);
                     ViewBag.Added = true;
-                    LogActivities.LogWordAdded(word);
+                    Task.Run(() => LogActivities.LogWordAdded(word));
                 }
                 catch
                 {
@@ -54,7 +55,7 @@ namespace Web.Controllers
             {
                 WordsService.DeleteWord(word);
                 ViewBag.Deleted = true;
-                LogActivities.LogWordDeleted(word);
+                Task.Run(() => LogActivities.LogWordDeleted(word));
             }
             catch
             {
@@ -70,7 +71,7 @@ namespace Web.Controllers
             {
                 WordsService.UpdateWord(oldWord, newWord);
                 ViewBag.Updated = true;
-                LogActivities.LogWordUpdated(newWord);
+                Task.Run(() => LogActivities.LogWordUpdated(newWord));
             }
             catch
             {

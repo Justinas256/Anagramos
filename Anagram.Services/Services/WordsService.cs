@@ -23,6 +23,11 @@ namespace Anagram.Business
             return WordsRepository.GetData();
         }
 
+        public async Task<List<string>> GetDataAsync()
+        {
+            return await Task.Run(() => WordsRepository.GetData()); ;
+        }
+
         public List<string> GetFilteredWords(string fragment)
         {
             return WordsRepository.GetFilteredWords(fragment);

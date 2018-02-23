@@ -41,29 +41,29 @@ namespace AnagramSolver.Tests.Controllers
         }
 
         [Test]
-        public void Anagram_IsPermitted_GetCorrectAnagrams()
+        public async Task Anagram_IsPermitted_GetCorrectAnagrams()
         {
             _userLogService.IsPermittedToView(Arg.Any<string>()).Returns(true);
             _cachedWordsService.FindAnagrams("alus").Returns(new List<string> { "sula", "alus" });
 
-            ViewResult result = (ViewResult)_homeController.Anagram("alus");
+            ViewResult result = await _homeController.Anagram("alus");
             result.ViewData.Values.ShouldBe(new List<List<string>> { new List<string> { "sula", "alus" } });
         }
 
         [Test]
-        public void Anagram_INotPermitted_RetuenNotPermitted()
+        public async Task Anagram_INotPermitted_RetuenNotPermitted()
         {
             _userLogService.IsPermittedToView(Arg.Any<string>()).Returns(false);
             //_cachedWordsService.FindAnagrams("alus").Returns(new List<string> { "sula", "alus" });
 
-            ViewResult result = (ViewResult)_homeController.Anagram("alus");
+            ViewResult result = await _homeController.Anagram("alus");
             result.ViewData.Values.ShouldBe(new List<object> { false });
         }
 
         [Test]
-        public void Anagram_GetView_IndexView()
+        public async Task Anagram_GetView_IndexView()
         {
-            var result = _homeController.Anagram("alus") as ViewResult;
+            ViewResult result = await _homeController.Anagram("alus");
             Assert.AreEqual("Index", result.ViewName);
         }
 

@@ -35,6 +35,11 @@ namespace Anagram.Business
             return null;
         }
 
+        public async Task<List<string>> FindWordsAsync(List<String> toFind)
+        {
+            return await Task.Run(() => FindWords(toFind));
+        }
+
         private String SortLetters(String word)
         {
             return String.Concat(word.OrderBy(c => c));

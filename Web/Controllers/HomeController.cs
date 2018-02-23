@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using Web.Utils;
 using Anagram.Core;
+using System.Threading.Tasks;
 
 namespace Web.Controllers
 {
@@ -33,7 +34,7 @@ namespace Web.Controllers
         }
 
         //find word anagrams
-        public ActionResult Anagram(String word)
+        public async Task<ViewResult> Anagram(String word)
         {
             string ip = LogActivities.GetIPAddress();
 
@@ -42,10 +43,11 @@ namespace Web.Controllers
                 //cookies - last searched words
                 WebCookies.AddNewWordToHistory(Request, Response, word);
                 //find anagrams -- find if there are cached words
-                List<string> anagrams = CachedWordService.FindAnagrams(word);
+                //List<string> anagrams = CachedWordService.FindAnagrams(word);
+                List<string> anagrams = await Task.Run(() => (CachedWordService.FindAnagrams(word)));
                 ViewBag.Anagrams = anagrams;
                 //UserLog
-                LogActivities.LogWordViewed(word);
+                Task.Run(() => LogActivities.LogWordViewed(word));
             }
             else
             {

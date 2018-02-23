@@ -27,10 +27,10 @@ namespace AnagramSolver.Tests
         }
 
         [Test]
-        public void GetAnagram_PassWord_GetCorrectAnagram()
+        public async Task GetAnagram_PassWord_GetCorrectAnagram()
         {
             var controller = new AnagramsApiController(Solver);
-            IHttpActionResult actionResult = controller.GetAnagram("alus");
+            IHttpActionResult actionResult = await controller.GetAnagram("alus");
             var contentResult = actionResult as OkNegotiatedContentResult<string>;
             Assert.AreEqual(contentResult.Content, "Founded: alus, sula");
         }
